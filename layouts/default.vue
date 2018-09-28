@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <nuxt/>
   </div>
 </template>
@@ -24,6 +24,14 @@ html {
   margin: 0;
 }
 
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;
@@ -31,6 +39,8 @@ html {
   color: #3b8070;
   text-decoration: none;
   padding: 10px 30px;
+  display: inline-flex;
+  align-self: center;
 }
 
 .button--green:hover {

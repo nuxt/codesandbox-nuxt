@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div>
-      <h2>Hello from {{ name }}</h2>
-      <p><nuxt-link to="/">Back home</nuxt-link></p>
+      <h1>Hello from <span class="name">{{ name }}</span>.</h1>
+      <p><nuxt-link to="/" class="button--grey">Back home</nuxt-link></p>
     </div>
   </div>
 </template>
@@ -25,13 +25,13 @@ export default {
   align-items: center;
   text-align: center;
 }
+h1 {
+  font-weight: 400;
+}
+.name {
+  color: #3b8070;
+}
 p {
-  margin-top: 10px;
-}
-a {
-  color: #41B883;
-}
-a:hover {
-  color: #3B8070;
+  margin-top: 20px;
 }
 </style>

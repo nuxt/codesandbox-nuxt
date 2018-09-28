@@ -1,5 +1,4 @@
 <template>
-  <section class="container">
     <div>
       <logo/>
       <h1 class="title">NUXT</h1>
@@ -10,7 +9,7 @@
         <a
           href="https://nuxtjs.org/"
           target="_blank"
-          class="button--green">Documentation</a>
+          class="button--green">Documentation <icon-link/></a>
         <nuxt-link
           to="/about"
           class="button--grey">About</nuxt-link>
@@ -21,23 +20,17 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import IconLink from '~/components/IconLink.vue'
 
 export default {
   components: {
-    Logo
+    Logo,
+    IconLink
   }
 }
 </script>
 
 <style scoped>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
