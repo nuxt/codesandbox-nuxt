@@ -1,6 +1,6 @@
-const pkg = require('./package')
+import pkg from './package.json'
 
-module.exports = {
+export default {
   mode: 'universal',
 
   /*
