@@ -1,4 +1,5 @@
 <template>
+  <section>
     <div>
       <logo/>
       <h1 class="title">NUXT</h1>
