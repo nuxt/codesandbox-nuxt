@@ -1,7 +1,7 @@
-const pkg = require("./package");
+import pkg from './package.json'
 
-module.exports = {
-  mode: "universal",
+export default {
+  mode: 'universal',
 
   /*
   ** Headers of the page
