@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "cross-env": "^5.2.0",
-    "nuxt": "^2.1.0",
+    "nuxt": "^2.3.1",
     "@nuxtjs/axios": "^5.0.0"
   },
   "devDependencies": {
