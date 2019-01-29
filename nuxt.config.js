@@ -37,12 +37,14 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     "@nuxtjs/axios",
-    "nuxt-buefy",
     "~/modules/typescript"
   ],
   router: {
     middleware: "context-route"
   },
+  plugins: [
+    "plugins/buefy"
+  ],
   /*
    ** Axios module configuration
    */
