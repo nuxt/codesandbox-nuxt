@@ -1,3 +1,4 @@
+import rateLimit from 'reqlim'
 import pkg from './package.json'
 
 export default {
@@ -44,6 +45,13 @@ export default {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
+
+  /*
+  ** ServerSide middleware
+  */
+  serverMiddleware: [
+    rateLimit({ windowMs: 3000, max: 3 })
+  ],
 
   /*
   ** Build configuration
