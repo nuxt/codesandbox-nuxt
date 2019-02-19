@@ -50,6 +50,8 @@ export default {
   ** ServerSide middleware
   */
   serverMiddleware: [
+    // Prevent loops eating all container resources!
+    // This rate-limit strategy is per-resource by default
     rateLimit({ windowMs: 3000, max: 3 })
   ],
 
