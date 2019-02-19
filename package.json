@@ -5,14 +5,15 @@
   "author": "Atinux",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "MINIMAL=1 CSB=1 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "nuxt": "^2.4.0",
-    "@nuxtjs/axios": "^5.0.0"
+    "@nuxtjs/axios": "^5.3.6",
+    "nuxt": "^2.4.3",
+    "reqlim": "^0.0.0"
   }
 }
