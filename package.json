@@ -12,8 +12,8 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.3.6",
-    "nuxt": "^2.4.3",
+    "@nuxtjs/axios": "^5.4.1",
+    "nuxt": "^2.5.1",
     "reqlim": "^0.0.0"
   }
 }
