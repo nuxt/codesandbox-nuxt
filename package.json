@@ -2,7 +2,7 @@
   "name": "codesandbox-nuxt",
   "version": "1.0.0",
   "description": "Nuxt starter for CodeSandBox",
-  "author": "Atinux",
+  "author": "Nuxt.js Team",
   "private": true,
   "scripts": {
     "dev": "MINIMAL=1 CSB=1 nuxt",
@@ -12,7 +12,7 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.4.1",
+    "@nuxt/http": "^0.1.0",
     "nuxt": "^2.5.1",
     "reqlim": "^0.0.0"
   }
