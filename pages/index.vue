@@ -1,19 +1,12 @@
 <template>
   <section>
     <div>
-      <logo/>
-      <h1 class="title">NUXT</h1>
-      <h2 class="subtitle">
-        Starter for CodeSandBox
-      </h2>
+      <Logo :width="350"/>
+      <h1 class="title">NUXT<span class="green">JS</span></h1>
+      <h2 class="subtitle">Starter for CodeSandBox</h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation <icon-link/></a>
-        <nuxt-link
-          to="/about"
-          class="button--grey">About</nuxt-link>
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation <IconLink/></a>
+        <NLink to="/about" class="button--grey">About</NLink>
       </div>
     </div>
   </section>
@@ -38,15 +31,18 @@ export default {
   display: block;
   font-weight: 400;
   font-size: 100px;
-  color: #526488;
+  color: #2E495E;
   letter-spacing: 1px;
   font-size: 6em;
+}
+.green {
+  color: #00C48D;
 }
 
 .subtitle {
   font-weight: 300;
   font-size: 3em;
-  color: #526488;
+  color: #2E495E;
   word-spacing: 5px;
   padding-bottom: 15px;
 }
