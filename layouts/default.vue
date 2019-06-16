@@ -6,8 +6,8 @@
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -25,6 +25,9 @@ html {
   margin: 0;
 }
 
+.red {
+  color: #da7272;
+}
 .container {
   min-height: 100vh;
   display: flex;
@@ -33,20 +36,20 @@ html {
   text-align: center;
 }
 
-.button--green {
+.button--red {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid #00C48D;
-  color: #00C48D;
+  border: 1px solid #da7272;
+  color: #da7272;
   text-decoration: none;
   padding: 10px 30px;
   display: inline-flex;
   align-self: center;
 }
 
-.button--green:hover {
+.button--red:hover {
   color: #fff;
-  background-color: #00C48D;
+  background-color: #da7272;
 }
 
 .button--grey {

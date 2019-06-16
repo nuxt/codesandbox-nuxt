@@ -1,8 +1,14 @@
 <template>
   <div class="container">
     <div>
-      <h1>Hello from <span class="name">{{ name }}</span>.</h1>
-      <p><NLink to="/" class="button--grey">Back home</NLink></p>
+      <h1>Hello!</h1>
+      <p>Remember that this is not any normal bot. This can be used outside of Discord for special uses.</p>
+      <p>
+        <NLink to="/" class="button--grey">Back home</NLink>
+      </p>
+      <div class="blank space500">owo</div>
+      <p>DOWN HERE!</p>
+      <h1>Welcoming</h1>
     </div>
   </div>
 </template>
@@ -11,10 +17,10 @@
 export default {
   asyncData() {
     return {
-      name: (process.server ? 'server' : 'client')
-    }
+      name: process.server ? "server" : "client"
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -25,11 +31,15 @@ export default {
   align-items: center;
   text-align: center;
 }
+.blank {
+  background-color: transparent;
+  color: transparent;
+}
+.space500 {
+  margin: 500px;
+}
 h1 {
   font-weight: 400;
-}
-.name {
-  color: #00C48D;
 }
 p {
   margin-top: 20px;
