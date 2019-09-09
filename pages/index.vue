@@ -2,7 +2,10 @@
   <v-container fill-height>
     <v-layout justify-center align-center>
       <v-flex shrink>
-        <v-data-table :headers="headers" :items="desserts" :items-per-page="5" class="elevation-1">
+            <v-data-table
+      :headers="headers"
+      :items="desserts"
+      :search="search">
           <template v-slot:no-data>
             <v-btn @click="console.log('clicked !')">Click me</v-btn>
           </template>
@@ -16,6 +19,7 @@
 export default {
   data() {
     return {
+      search: "",
       headers: [
         {
           text: "Dessert (100g serving)",
