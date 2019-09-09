@@ -1,5 +1,5 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "nuxtjs-vuetify",
   "version": "1.0.0",
   "description": "Nuxt starter for CodeSandBox",
   "author": "Nuxt.js Team",
@@ -12,8 +12,9 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@nuxt/http": "^0.3.0",
-    "nuxt": "^2.5.1",
-    "reqlim": "^0.0.0"
-  }
+    "@nuxtjs/vuetify": "1.2.1",
+    "nuxt": "2.8.1",
+    "reqlim": "0.0.0"
+  },
+  "keywords": []
 }
