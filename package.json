@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@nuxt/http": "^0.3.0",
+    "@nuxtjs/tailwindcss": "1.1.2",
     "nuxt": "^2.5.1",
-    "reqlim": "^0.0.0"
+    "postprocessing": "6.7.0",
+    "reqlim": "^0.0.0",
+    "three": "0.108.0"
   }
 }
