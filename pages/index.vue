@@ -2,10 +2,11 @@
   <section>
     <div>
       <Logo :width="350"/>
-      <h1 class="title">NUXT
+      <h1 class="title">
+        NUXT
         <span class="green">JS</span>
       </h1>
-      <h2 class="subtitle">swap</h2>
+      <h2 class="subtitle">swap2</h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation
           <IconLink/>
