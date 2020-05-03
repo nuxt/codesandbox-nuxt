@@ -1,21 +1,50 @@
 <template>
-  <div class="container">
-    <Nuxt/>
-  </div>
+  <Nuxt/>
 </template>
+<script>
+export default {
+  mounted: function() {
+    //Animate all elements with class animate-me
+    const animateMe = document.querySelectorAll(".animate-me");
 
-<style>
+    let observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          console.log(entry.target + "in the view");
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target);
+        } else {
+          console.log("out of view");
+        }
+      });
+    });
+
+    animateMe.forEach(el => {
+      observer.observe(el);
+    });
+  }
+};
+</script>
+<style lang="scss">
+@import "./assets/_mixins.scss";
+
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-weight: regular;
+  font-size: 12px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  color: #2E495E;
+  color: $black;
+  @include bp(s720) {
+    font-size: 14px;
+  }
+  @include bp(s1280) {
+    font-size: 16px;
+  }
 }
 
 *,
@@ -24,43 +53,64 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+h1,
+.jf-h1 {
+  @include h1;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #00C48D;
-  color: #00C48D;
+h2,
+.jf-h2 {
+  @include h2;
+}
+h3,
+.jf-h3 {
+  @include h3;
+}
+h4,
+.jf-h4 {
+  @include h4;
+}
+h5,
+.jf-h5 {
+  @include h5;
+}
+h6,
+.jf-h6 {
+  @include h6;
+}
+a {
   text-decoration: none;
-  padding: 10px 30px;
-  display: inline-flex;
-  align-self: center;
+  color: $black;
+  border-bottom: 2px solid transparent;
+  &:hover {
+    border-bottom: 2px solid $black;
+  }
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #00C48D;
+p {
+  line-height: 1.5;
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #2E495E;
-  color: #2E495E;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.jf-label {
+  @include label;
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #2E495E;
+.jf-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  @include padding-top;
+  @include padding-bottom;
+  @include padding-left;
+  @include padding-right;
+}
+.animate-me {
+  opacity: 0;
+  transform: translateY(200px);
+  @include transition(all, 1s);
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

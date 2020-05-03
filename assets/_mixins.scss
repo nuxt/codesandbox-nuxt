@@ -1,0 +1,161 @@
+// Mixins
+$breakpoints: (
+  "s360": (
+    min-width: 360px
+  ),
+  "s480": (
+    min-width: 480px
+  ),
+  "s720": (
+    min-width: 720px
+  ),
+  "s960": (
+    min-width: 960px
+  ),
+  "s1280": (
+    min-width: 1280px
+  ),
+  "s1440": (
+    min-width: 1440px
+  ),
+  "s1920": (
+    min-width: 1920px
+  )
+);
+
+@mixin bp($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  } @else {
+    @warn "Couldn't find a breakpoint named `#{$name}`.";
+  }
+}
+@mixin transition($property, $time) {
+  transition: $property $time cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+// Variables
+$font-archivo: 'Archivo', sans-serif;
+$font-narrow: 'Archivo Narrow', sans-serif;
+
+$black: #444444;
+
+@mixin bold(){
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+@mixin h1(){
+  @include bold;
+  font-size: 36px;
+  @include bp(s720) {
+    font-size: 48px;
+  }
+  @include bp(s1280) {
+    font-size: 90px;
+  }
+}
+@mixin h2() {
+  @include bold;
+  font-size: 24px;
+  @include bp(s720) {
+    font-size: 36px;
+  }
+  @include bp(s1280) {
+    font-size: 48px;
+  }
+}
+@mixin h3() {
+  @include bold;
+  font-size: 18px;
+  @include bp(s720) {
+    font-size: 24px;
+  }
+  @include bp(s1280) {
+    font-size: 36px;
+  }
+}
+@mixin h4() {
+  @include bold;
+  font-size: 16px;
+  @include bp(s720) {
+    font-size: 18px;
+  }
+  @include bp(s1280) {
+    font-size: 22px;
+  }
+}
+@mixin h5{
+  @include bold;
+  font-size: 12px;
+  @include bp(s720){
+    font-size: 14px;
+  }
+  @include bp(s1280){
+    font-size: 16px;
+  }
+}
+@mixin h6{
+  @include bold;
+  font-size: 10px;
+  @include bp(s720){
+    font-size: 12px;
+  }
+  @include bp(s1280){
+    font-size: 14px;
+  }
+}
+@mixin label{
+  font-family: $font-narrow;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  @include bp(s1280){
+    font-size: 12px;
+  }
+}
+@mixin padding-top{
+  padding-top: 40px;
+  @include bp(s960){
+    padding-top: 80px;
+  }
+  @include bp(s1280){
+    padding-top: 120px; 
+  }
+}
+@mixin padding-bottom{
+  padding-bottom: 40px;
+  @include bp(s960){
+    padding-bottom: 80px;
+  }
+  @include bp(s1280){
+    padding-bottom: 120px; 
+  }
+}
+@mixin padding-left{
+  padding-left: 20px;
+  @include bp(s480){
+    padding-left: 40px;
+  }
+  @include bp(s720){
+    padding-left: 60px;
+  }
+  @include bp(s1280){
+    padding-left: 80px;
+  }
+}
+@mixin padding-right{
+  padding-right: 20px;
+  @include bp(s480){
+    padding-right: 40px;
+  }
+  @include bp(s720){
+    padding-right: 60px;
+  }
+  @include bp(s1280){
+    padding-right: 80px;
+  }
+}
+
