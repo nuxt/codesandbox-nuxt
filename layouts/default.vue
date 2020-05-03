@@ -1,66 +1,48 @@
 <template>
-  <div class="container">
-    <Nuxt/>
-  </div>
+  <v-app>
+    <v-app-bar dark app>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Mekatronik AP</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn text color="white" nuxt-link to="/">Home</v-btn>
+      <v-btn text color="white" nuxt-link to="/services">Services</v-btn>
+      <v-btn text color="white">Works</v-btn>
+      <v-btn text color="white">Products</v-btn>
+      <v-btn text color="white">Blog</v-btn>
+
+      <!-- <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-menu left bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>-->
+    </v-app-bar>
+    <v-content>
+      <Nuxt/>
+    </v-content>
+    <v-footer dark app absolute>
+      <span class="white--text caption">&copy; 2020 - By REA during WFH & Lockdown</span>
+    </v-footer>
+  </v-app>
 </template>
 
 <style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  color: #2E495E;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #00C48D;
-  color: #00C48D;
-  text-decoration: none;
-  padding: 10px 30px;
-  display: inline-flex;
-  align-self: center;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #00C48D;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #2E495E;
-  color: #2E495E;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #2E495E;
-}
 </style>
