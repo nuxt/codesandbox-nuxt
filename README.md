@@ -1,18 +1,20 @@
-# codesandbox-nuxt
+# codesandbox-nuxt-tailwindcss
 
-> Nuxt starter for CodeSandBox (used for https://template.nuxtjs.org)
+> Nuxt starter for CodeSandBox with TailwindCSS
+
+Yet another Sandbox to play around.
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 
 # serve with hot reload at localhost:3000
-$ yarn run dev
+$ yarn dev
 
 # build for production and launch server
-$ yarn run build
+$ yarn build
 $ yarn start
 
 # generate static project

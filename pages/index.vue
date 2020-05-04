@@ -1,57 +1,45 @@
 <template>
-  <section>
-    <div>
-      <logo/>
-      <h1 class="title">NUXT</h1>
-      <h2 class="subtitle">
-        Starter for CodeSandBox
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation <icon-link/></a>
-        <nuxt-link
-          to="/about"
-          class="button--grey">About</nuxt-link>
+  <div>
+    <div class="max-w-sm rounded overflow-hidden shadow-lg mb-4 mx-auto">
+      <img
+        class="w-full"
+        src="https://tailwindcss.com/img/card-top.jpg"
+        alt="Sunset in the mountains"
+      >
+      <div class="px-6 py-4 pb-2">
+        <div class="font-bold text-xl mb-2">The Coolest Sunset</div>
+        <p
+          class="text-gray-700 text-base"
+        >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+      </div>
+      <div class="px-6 py-4">
+        <span class="badge mr-2">#photography</span>
+        <span class="badge mr-2">#travel</span>
+        <span class="badge">#winter</span>
       </div>
     </div>
-  </section>
+
+    <n-link to="about">
+      <t-button>About page</t-button>
+    </n-link>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import IconLink from '~/components/IconLink.vue'
+import TButton from "~/components/TButton";
 
 export default {
   components: {
-    Logo,
-    IconLink
+    TButton
   }
-}
+};
 </script>
 
 <style scoped>
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 400;
-  font-size: 100px;
-  color: #526488;
-  letter-spacing: 1px;
-  font-size: 6em;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 3em;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.badge {
+  @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700;
+  &:hover {
+    @apply bg-gray-300;
+  }
 }
 </style>

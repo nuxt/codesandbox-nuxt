@@ -1,19 +1,21 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "nuxt-tailwindcss",
   "version": "1.0.0",
-  "description": "Nuxt starter for CodeSandBox",
+  "description": "Nuxt.js example with TailwindCSS module.",
   "author": "Atinux",
   "private": true,
   "scripts": {
-    "dev": "MINIMAL=1 CSB=1 nuxt",
+    "dev": "MINIMAL=1 CSB=1 nuxt dev",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.4.1",
-    "nuxt": "^2.5.1",
+    "nuxt": "2.12.2",
     "reqlim": "^0.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^2.0.0"
   }
 }
