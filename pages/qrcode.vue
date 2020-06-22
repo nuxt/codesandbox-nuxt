@@ -39,6 +39,7 @@ export default {
     onDecode(code) {
       if (code && code.length === 3) {
         console.log("Code:", code);
+        this.$ga.event("qr_code", "scane", code, 1);
         this.$router.push({ path: "/submit", query: { code } });
       } else {
         this.error = "Der QR Code ist leider falsch.";

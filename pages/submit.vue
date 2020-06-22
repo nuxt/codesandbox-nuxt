@@ -157,6 +157,7 @@ export default {
       console.log("yeah"); // empty clich handler for outside modal click...
     },
     cancel() {
+      this.$ga.event("coupon", "cancel", this.coupon.id, 1);
       cookie.remove("active_coupon_id");
       this.$router.push("/");
     },
@@ -169,6 +170,7 @@ export default {
             this.coupon.id
           }&code=${this.code}`
         );
+        this.$ga.event("coupon", "submit", this.coupon.id, 1);
         cookie.remove("active_coupon_id");
         cookie.set("submitted_coupon_id", this.coupon.id, {
           expires: 1 /* days */

@@ -17,27 +17,30 @@
           wieder vorbei.
         </div>
         <div id="coupon-list">
-          <div
-            v-for="coupon in coupons"
-            :key="coupon.id"
-            class="coupon"
-            :class="{ inactive: !coupon.active }"
-            @click="openCouponModal(coupon)"
-          >
-            <img :src="coupon.image">
-            <div class="content">
-              <div class="vendor">{{coupon.vendor}}</div>
-              <h3 class="title">
-                {{coupon.title}}
-                <!--<span
+          <transition-group name="fade">
+            <div
+              v-for="coupon in coupons"
+              :key="coupon.id"
+              class="coupon"
+              :class="{ inactive: !coupon.active, loaded: coupon.loaded }"
+              @click="openCouponModal(coupon)"
+            >
+              <img :src="coupon.image" @load="coupon.loaded = true">
+              <div class="content" v-if="coupon.loaded">
+                <div class="vendor">{{coupon.vendor}}</div>
+                <h3 class="title">
+                  {{coupon.title}}
+                  <!--<span
                   class="badge-empty-v2"
                   v-if="!coupon.active"
-                >Bald&nbsp;wieder&nbsp;verfügbar!</span>-->
-              </h3>
-              <p>{{coupon.description}}</p>
-              <div class="badge-empty-v1" v-if="!coupon.active">Bald wieder verfügbar!</div>
+                  >Bald&nbsp;wieder&nbsp;verfügbar!</span>-->
+                </h3>
+                <p>{{coupon.description}}</p>
+                <div class="badge-empty-v1" v-if="!coupon.active">Bald wieder verfügbar!</div>
+              </div>
             </div>
-          </div>
+          </transition-group>
+          <div v-if="loading" class="spinner"></div>
         </div>
         <div class="footer">
           <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>&nbsp;|&nbsp;
@@ -110,7 +113,12 @@ export default {
       coupons[index].active = false;
       console.log("Coupon schon eingelöst: ", submittedCouponId);
     }
-    return { coupons };
+    return {
+      coupons: coupons.map(c => {
+        c.loaded = false;
+        return c;
+      })
+    };
   },
   watch: {
     selectedCoupon(val) {
@@ -121,6 +129,11 @@ export default {
           this.showModal = false;
         }
       }, 10);
+    }
+  },
+  computed: {
+    loading() {
+      return this.coupons.some(c => !c.loaded);
     }
   },
   created() {
@@ -135,11 +148,17 @@ export default {
             .toString(36)
             .substr(2, 10);
           Cookie.set("user_id", userId);
+          this.$ga.event("user", "new", userId, 1);
+        } else {
+          this.$ga.event("user", "come_back", userId, 1);
         }
         console.log(`User id: '${userId}'`);
       }
     },
     openCouponModal(coupon) {
+      if (coupon.active) {
+        this.$ga.event("coupon", "click", coupon.id, 1);
+      }
       this.selectedCoupon = coupon;
     },
     activateCoupon(coupon) {
@@ -147,6 +166,7 @@ export default {
       Cookie.set("active_coupon_expiry", Date.now() + 1000 * 60 * 60 * 24, {
         expires: 1 /* days */
       });
+      this.$ga.event("coupon", "activate", coupon.id, 1);
       this.$router.push("/submit");
     }
   }
@@ -154,4 +174,41 @@ export default {
 </script>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+@keyframes fade_in {
+  from {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.coupon .content {
+  animation-name: fade_in;
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
+  animation-delay: 0s;
+  animation-timing-function: ease-in-out;
+}
+
+.coupon {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.coupon.loaded {
+  transform: scale(1);
+  opacity: 1;
+}
 </style>
