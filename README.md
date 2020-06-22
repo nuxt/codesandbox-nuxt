@@ -1,6 +1,6 @@
-# codesandbox-nuxt
+# heylocal
 
-> Nuxt starter for CodeSandBox (used for https://template.nuxtjs.org)
+> heylocal.de
 
 ## Build Setup
 
