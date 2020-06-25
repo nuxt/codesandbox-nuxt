@@ -166,7 +166,7 @@ export default {
       console.log("Request submit: ", this.code, this.coupon.id);
       try {
         const response = await axios.get(
-          `https://znsjx.sse.codesandbox.io/api/submit?coupon_id=${
+          `${process.env.SANDBOX_URL}api/submit?coupon_id=${
             this.coupon.id
           }&code=${this.code}`
         );
