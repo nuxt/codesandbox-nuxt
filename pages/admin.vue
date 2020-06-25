@@ -80,18 +80,23 @@ export default {
     }
   },
   async asyncData({ params, req }) {
-    let token;
-    if (process.server) {
-      token = cookieparser.parse(req.headers.cookie).token;
-    } else {
-      token = cookie.get("token");
+    try {
+      let token;
+      if (process.server) {
+        token = cookieparser.parse(req.headers.cookie).token;
+      } else {
+        token = cookie.get("token");
+      }
+      const {
+        data: {coupons}
+      } = await axios.get(
+        `https://be13n.sse.codesandbox.io/api/admin-coupons?t=${token}`
+      );
+      return {coupons};
+    } catch(e) {
+      console.log("Error: ", e);
+      return { coupons: [] };
     }
-    const {
-      data: { coupons }
-    } = await axios.get(
-      `https://be13n.sse.codesandbox.io/api/admin-coupons?t=${token}`
-    );
-    return { coupons };
   },
   methods: {
     logout() {
