@@ -7,6 +7,8 @@ export default {
    */
   mode: "universal",
 
+  env: process.env,
+
   /*
    ** Headers of the page
    ** Doc: https://vue-meta.nuxtjs.org/api/#metainfo-properties
