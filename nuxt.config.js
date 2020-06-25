@@ -1,3 +1,5 @@
+console.log("Google Analytics Key: ", process.env.GOOGLE_ANALYTICS_ID);
+
 export default {
   /*
    ** Rendering mode
@@ -66,7 +68,7 @@ export default {
     [
       "@nuxtjs/google-analytics",
       {
-        id: "UA-156261352-1",
+        id: process.env.GOOGLE_ANALYTICS_ID || "UA-156261352-1",
         debug: {
           enabled: true,
           sendHitTask: true
