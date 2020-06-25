@@ -6,7 +6,7 @@
     "vendor": "Holz & Hygge",
     "title": "Kaufe Eins erhalte Zwei",
     "description": "Beim Kauf von 2 Heißgetränken erhälst du das günstigere umsonst",
-    "image": "./images/Holz&Hygge2_1.jpg",
+    "image": "./Holz&Hygge2_1.jpg",
     "submit": {
       "info": "Du kaufst ein Heißgetränk und bekommst zwei. Scanne dazu den Freischaltcode vorort im Geschäft.",
       "code": "123"
@@ -27,7 +27,7 @@
     "vendor": "Saturn Jena",
     "title": "Lieferung von TV oder Großgerät",
     "description": "Erhalte beim Kauf eines TV oder Großgeräts ab 499€ eine kostenlose Standard Lieferung",
-    "image": "./images/Kolo_Lieferung.jpg",
+    "image": "./Kolo_Lieferung.jpg",
     "submit": {
       "info": "Zeige diesen Gutschein beim Kauf eines TV oder Großgeräts ab 499€ im Saturn in Jena vor. Ein Mitarbeiter entwertet diesen Gutschein für dich.",
       "code": "456"
@@ -47,7 +47,7 @@
     "vendor": "Laufladen Jena",
     "title": "10% Gutschein",
     "description": "Spare 10% beim Kauf deiner nächsten Laufschuhe.",
-    "image": "./images/running2.jpg",
+    "image": "./running2.jpg",
     "submit": {
       "info": "Löse diesen Gutschein vor Ort im Laufladen ein. Dieser wird von einem Mitarbeiter entwerten.",
       "code": "789"

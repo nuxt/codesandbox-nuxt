@@ -11,7 +11,6 @@
     </div>
   </section>
 </template>
-
 <script>
 import axios from "axios";
 import cookie from "js-cookie";
