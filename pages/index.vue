@@ -86,48 +86,47 @@
 </template>
 
 <script>
-  import axios from "axios";
-  import Cookie from "js-cookie";
-  import cookieparser from "cookieparser";
+import axios from "axios";
+import Cookie from "js-cookie";
+import cookieparser from "cookieparser";
 
-  export default {
-    middleware: "hasNoActiveCoupon",
-    data() {
-      return {
-        selectedCoupon: undefined,
-        showModal: false,
-        error: undefined
-      };
-    },
-    async asyncData({params, req}) {
-      try {
+export default {
+  middleware: "hasNoActiveCoupon",
+  data() {
+    return {
+      selectedCoupon: undefined,
+      showModal: false,
+      error: undefined
+    };
+  },
+  async asyncData({ params, req }) {
+    try {
       let submittedCouponId;
-        // eslint-disable-next-line
-        if (process.server && req.headers.cookie) {
-          submittedCouponId = cookieparser.parse(req.headers.cookie)
-            .submitted_coupon_id;
-        } else if (process.client) {
-          submittedCouponId = Cookie.get("submitted_coupon_id");
+      if (process.server && req.headers.cookie) {
+        submittedCouponId = cookieparser.parse(req.headers.cookie)
+          .submitted_coupon_id;
+      } else if (process.client) {
+        submittedCouponId = Cookie.get("submitted_coupon_id");
+      }
+      const {
+        data: { coupons }
+      } = await axios.get(`${process.env.SANDBOX_URL}api/coupons`);
+      if (submittedCouponId !== undefined) {
+        const index = coupons.findIndex(c => c.id === submittedCouponId);
+        if (index !== -1) {
+          coupons[index].active = false;
+          console.log("Coupon schon eingelöst: ", submittedCouponId);
         }
-        const {
-          data: {coupons}
-        } = await axios.get(`https://be13n.sse.codesandbox.io/api/coupons`);
-        if (submittedCouponId !== undefined) {
-          const index = coupons.findIndex(c => c.id === submittedCouponId);
-          if (index !== -1) {
-            coupons[index].active = false;
-            console.log("Coupon schon eingelöst: ", submittedCouponId);
-          }
-        }
-        return {
-          coupons: coupons.map(c => {
-            c.loaded = false;
-            return c;
-          })
-        };
-      } catch (e) {
+      }
+      return {
+        coupons: coupons.map(c => {
+          c.loaded = false;
+          return c;
+        })
+      };
+    } catch (e) {
       console.log("Error: ", e);
-        return {error: e.message, coupons: []};
+      return { error: e.message, coupons: [] };
     }
   },
   watch: {
