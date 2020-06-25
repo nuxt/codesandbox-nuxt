@@ -88,12 +88,12 @@ export default {
         token = cookie.get("token");
       }
       const {
-        data: {coupons}
+        data: { coupons }
       } = await axios.get(
-        `https://be13n.sse.codesandbox.io/api/admin-coupons?t=${token}`
+        `${process.env.SANDBOX_URL}api/admin-coupons?t=${token}`
       );
-      return {coupons};
-    } catch(e) {
+      return { coupons };
+    } catch (e) {
       console.log("Error: ", e);
       return { coupons: [] };
     }
@@ -111,7 +111,7 @@ export default {
       try {
         coupon.token = cookie.get("token");
         const query = this.objectToUrlQuery(coupon);
-        const url = "https://be13n.sse.codesandbox.io/api/update-coupon";
+        const url = `${process.env.SANDBOX_URL}api/update-coupon`;
         console.log("Request: ", `${url}${query}`);
         const {
           data: { coupons }

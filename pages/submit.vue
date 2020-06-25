@@ -78,7 +78,7 @@ export default {
     }
     const {
       data: { coupons }
-    } = await axios.get(`https://be13n.sse.codesandbox.io/api/coupons`);
+    } = await axios.get(`${process.env.SANDBOX_URL}api/coupons`);
     const coupon = coupons.find(c => c.id === activeCouponId);
     return { coupon, activeCouponExpiry };
   },
