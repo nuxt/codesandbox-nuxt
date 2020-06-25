@@ -32,7 +32,7 @@ export default {
         const {
           data: { token }
         } = await axios.get(
-          `https://znsjx.sse.codesandbox.io/api/login?pw=${this.password}`
+          `https://be13n.sse.codesandbox.io/api/login?pw=${this.password}`
         );
         cookie.set("token", token);
         this.$router.push("/admin");

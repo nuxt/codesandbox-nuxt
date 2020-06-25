@@ -4,6 +4,7 @@
       <!-- Content with list of coupons... -->
       <div class="content">
         <h1>heylocal – Gutscheine für Jena</h1>
+        <p v-if="error" class="error">{{ error }}</p>
         <p>Sichere dir jeden Tag einen Gutschein</p>
         <p class="small">(solange der Vorrat reicht)</p>
         <div id="info-text-submitted">
@@ -25,7 +26,7 @@
               :class="{ inactive: !coupon.active, loaded: coupon.loaded }"
               @click="openCouponModal(coupon)"
             >
-              <img :src="coupon.image" @load="coupon.loaded = true">
+              <img :src="coupon.image" @load="couponImageLoaded(coupon)">
               <div class="content" v-if="coupon.loaded">
                 <div class="vendor">{{coupon.vendor}}</div>
                 <h3 class="title">
@@ -94,31 +95,38 @@ export default {
   data() {
     return {
       selectedCoupon: undefined,
-      showModal: false
+      showModal: false,
+      error: undefined
     };
   },
   async asyncData({ params, req }) {
-    let submittedCouponId;
-    if (process.server) {
-      submittedCouponId = cookieparser.parse(req.headers.cookie)
-        .submitted_coupon_id;
-    } else {
-      submittedCouponId = Cookie.get("submitted_coupon_id");
+    try {
+      let submittedCouponId;
+      // eslint-disable-next-line
+      if (process.server) {
+        submittedCouponId = cookieparser.parse(req.headers.cookie)
+          .submitted_coupon_id;
+      } else {
+        submittedCouponId = Cookie.get("submitted_coupon_id");
+      }
+      const {
+        data: { coupons }
+      } = await axios.get(`https://be13n.sse.codesandbox.io/api/coupons`);
+      const index = coupons.findIndex(c => c.id === submittedCouponId);
+      if (index !== -1) {
+        coupons[index].active = false;
+        console.log("Coupon schon eingelöst: ", submittedCouponId);
+      }
+      return {
+        coupons: coupons.map(c => {
+          c.loaded = false;
+          return c;
+        })
+      };
+    } catch (e) {
+      console.log("Error: ", e);
+      return { error: e.message };
     }
-    const {
-      data: { coupons }
-    } = await axios.get(`https://znsjx.sse.codesandbox.io/api/coupons`);
-    const index = coupons.findIndex(c => c.id === submittedCouponId);
-    if (index !== -1) {
-      coupons[index].active = false;
-      console.log("Coupon schon eingelöst: ", submittedCouponId);
-    }
-    return {
-      coupons: coupons.map(c => {
-        c.loaded = false;
-        return c;
-      })
-    };
   },
   watch: {
     selectedCoupon(val) {
@@ -140,7 +148,13 @@ export default {
     this.setUserId();
   },
   methods: {
+    couponImageLoaded(coupon) {
+      const i = this.coupons.findIndex(c => c.id === coupon.id);
+      console.log("Image loaded!");
+      this.coupons[i].loaded = true;
+    },
     setUserId() {
+      // eslint-disable-next-line
       if (process.client) {
         let userId = Cookie.get("user_id");
         if (!userId) {

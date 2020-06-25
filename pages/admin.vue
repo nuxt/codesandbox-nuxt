@@ -89,7 +89,7 @@ export default {
     const {
       data: { coupons }
     } = await axios.get(
-      `https://znsjx.sse.codesandbox.io/api/admin-coupons?t=${token}`
+      `https://be13n.sse.codesandbox.io/api/admin-coupons?t=${token}`
     );
     return { coupons };
   },
@@ -106,7 +106,7 @@ export default {
       try {
         coupon.token = cookie.get("token");
         const query = this.objectToUrlQuery(coupon);
-        const url = "https://znsjx.sse.codesandbox.io/api/update-coupon";
+        const url = "https://be13n.sse.codesandbox.io/api/update-coupon";
         console.log("Request: ", `${url}${query}`);
         const {
           data: { coupons }
