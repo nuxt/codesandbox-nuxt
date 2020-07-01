@@ -81,7 +81,7 @@ export default {
   ],
 
   serverMiddleware: [
-    bodyParser.json(),
+    bodyParser.json({ limit: "50mb" }),
     { path: "/api/logger", handler: "~/api/logger.js" },
     { path: "/api/coupons", handler: "~/api/coupons.js" },
     { path: "/api/admin-coupons", handler: "~/api/adminCoupons.js" },
