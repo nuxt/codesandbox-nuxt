@@ -1,8 +1,30 @@
 <template>
   <div class="container">
     <Nuxt/>
+    <client-only>
+      <CookieLaw theme="dark-lime">
+        <div slot="message">
+          <p>Diese Webseite verwendet Cookies, um die Nutzung kontinuierlich zu verbessern.</p>
+          <p>
+            <nuxt-link to="/imprint">> Mehr erfahren</nuxt-link>
+          </p>
+        </div>
+      </CookieLaw>
+    </client-only>
   </div>
 </template>
+
+<script>
+export default {
+  components: {
+    CookieLaw: async () => {
+      /* eslint-disable */
+      if (process.client) return (await import("vue-cookie-law")).default;
+    }
+  }
+};
+</script>
+
 
 <style>
 /****** Elad Shechter's RESET *******/
