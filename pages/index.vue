@@ -1,4 +1,4 @@
-<template>
+  <template>
   <section>
     <div>
       <Logo :width="350"/>
@@ -12,7 +12,7 @@
           <IconLink/>
         </a>
         <NLink to="/about" class="button--grey">About</NLink>
-      </div>Merhaba
+      </div><Merhaba/>
     </div>
   </section>
 </template>
@@ -20,11 +20,13 @@
 <script>
 import Logo from "~/components/Logo.vue";
 import IconLink from "~/components/IconLink.vue";
+import Merhaba from "~/components/Merhaba.vue";
 
 export default {
   components: {
     Logo,
-    IconLink
+    IconLink,
+    Merhaba
   }
 };
 </script>

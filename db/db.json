@@ -1,36 +1,38 @@
 {
-  "sozlesmeler": {
-    "anahtar": "dm001",
-    "sozlesmeAdi": "Demo Sözleşme",
-    "isveren": "Demo Bakanlığı",
-    "yuklenici": "Demo Yüklenici",
-    "musavir": "Ali Ak",
-    "tarihler": {
-      "sozlesme": "2020-06-24",
-      "yerTeslim": "2022-06-24",
-      "baslama": "2020-07-01",
-      "bitis": "2020-08-01"
-    },
-    "maliyet": {
-      "paraBirimi": "TL",
-      "sozlesmeBedeli": 1000000,
-      "teminatKesintiOrani": 0.05,
-      "avansOrani": 0.1,
-      "avansKesintiOrani": 0.01
-    },
-    "zeyilnameler": [
-      {
-        "anahtar": "dm001-z01",
-        "turu": "Süre Uzatımı",
-        "tarihi": "2020-07-02",
-        "durumu": "Onaylandı"
+  "sozlesmeler": [
+    {
+      "id": "1",
+      "sozlesmeAdi": "Demo Sözleşme",
+      "isveren": "Demo Bakanlığı",
+      "yuklenici": "Demo Yüklenici",
+      "musavir": "Ali Ak",
+      "tarihler": {
+        "sozlesme": "2020-06-24",
+        "yerTeslim": "2022-06-24",
+        "baslama": "2020-07-01",
+        "bitis": "2020-08-01"
+      },
+      "maliyet": {
+        "paraBirimi": "TL",
+        "sozlesmeBedeli": 1000000,
+        "teminatKesintiOrani": 0.05,
+        "avansOrani": 0.1,
+        "avansKesintiOrani": 0.01
+      },
+      "zeyilnameler": [
+        {
+          "anahtar": "dm001-z01",
+          "turu": "Süre Uzatımı",
+          "tarihi": "2020-07-02",
+          "durumu": "Onaylandı"
+        }
+      ],
+      "onayTarihleri": {
+        "muteahhit": "2020-06-01",
+        "musavir": "2020-06-01"
       }
-    ],
-    "onayTarihleri": {
-      "muteahhit": "2020-06-01",
-      "musavir": "2020-06-01"
     }
-  },
+  ],
 
   "meetups": [
     {
