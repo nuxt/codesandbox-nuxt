@@ -15,8 +15,8 @@
             <th>Usage</th>
             <th>Balance</th>
             <th>Code</th>
-            <th>Config</th>
-            <th>Bild</th>
+            <th>Konfigurieren</th>
+            <th>Bild hochladen</th>
             <th>Active?</th>
           </tr>
         </thead>
@@ -63,6 +63,7 @@
           </tr>
         </tbody>
       </table>
+      <button type="button" @click="addCoupon">+ Gutschein Hinzufügen</button>
       <div class="editor" v-if="rawCoupon">
         <h2>
           Gutschein Konfigurieren
@@ -127,6 +128,31 @@ export default {
     }
   },
   methods: {
+    addCoupon() {
+      const template = {
+        id: "COUPON_" + this.coupons.length,
+        active: false,
+        usageCount: 0,
+        balance: 5,
+        vendor: "Beispiel Ort",
+        title: "Beispiel Titel",
+        description: "Beispielbeschreibung",
+        submit: {
+          info: "Infotext auf Submit-Page kommt hierher",
+          code: "123"
+        },
+        location: {
+          title: "Orttitel hier...",
+          address: "Adresse hier...",
+          iOSLink:
+            "https://maps.apple.com/?daddr=holz+&+hygge+Jena&dirflg=d&t=h",
+          androidLink:
+            "https://maps.google.com/?daddr=holzundhygge+Jena&dirflg=d&t=h"
+        }
+      };
+      this.rawCoupon = JSON.stringify(template, null, 4);
+    },
+
     async saveRawCoupon() {
       try {
         const couponToSave = JSON.parse(this.rawCoupon);
@@ -138,6 +164,7 @@ export default {
           }
         );
         this.rawCoupon = "";
+        window.location.reload(true);
       } catch (e) {
         this.error = "Konnte nicht gespeichert werden.";
       }

@@ -8,14 +8,16 @@ export default function(req, res, next) {
     "utf8"
   );
   jsonResponse(res, {
-    coupons: JSON.parse(data).map(coupon => {
-      if (coupon.balance === 0 || coupon.usageCount >= coupon.balance) {
-        coupon.active = false;
-      }
-      delete coupon.submit.code;
-      delete coupon.usageCount;
-      delete coupon.balance;
-      return coupon;
-    })
+    coupons: JSON.parse(data)
+      .filter(c => c.active)
+      .map(coupon => {
+        if (coupon.balance === 0 || coupon.usageCount >= coupon.balance) {
+          coupon.active = false;
+        }
+        delete coupon.submit.code;
+        delete coupon.usageCount;
+        delete coupon.balance;
+        return coupon;
+      })
   });
 }
