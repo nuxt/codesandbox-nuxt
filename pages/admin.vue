@@ -164,7 +164,12 @@ export default {
           }
         );
         this.rawCoupon = "";
-        window.location.reload(true);
+        const {
+          data: { coupons }
+        } = await axios.get(
+          `${process.env.SANDBOX_URL}api/admin-coupons?t=${cookie.get("token")}`
+        );
+        this.coupons = coupons;
       } catch (e) {
         this.error = "Konnte nicht gespeichert werden.";
       }
@@ -231,13 +236,21 @@ export default {
         event.target.blur();
       }
       try {
-        coupon.token = cookie.get("token");
-        const query = this.objectToUrlQuery(coupon);
+        const update = {
+          id: coupon.id,
+          token: cookie.get("token"),
+          balance: coupon.balance,
+          active: coupon.active
+        };
+
+        const query = this.objectToUrlQuery(update);
         const url = `${process.env.SANDBOX_URL}api/update-coupon`;
-        console.log("Request: ", `${url}${query}`);
         const {
           data: { coupons }
-        } = await axios.get(`${url}${query}`);
+        } = await axios.get(
+          `${process.env.SANDBOX_URL}api/admin-coupons?t=${cookie.get("token")}`
+        );
+        this.coupons = coupons;
       } catch (e) {
         console.error("Error on updating coupon: ", e);
         this.error = "Could not update coupon!";
@@ -303,7 +316,7 @@ input[type="number"] {
 
 .close-icon {
   margin-bottom: -8px;
-  display: inline-block;
+  display: block;
   float: right;
 }
 
