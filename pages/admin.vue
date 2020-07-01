@@ -245,6 +245,7 @@ export default {
 
         const query = this.objectToUrlQuery(update);
         const url = `${process.env.SANDBOX_URL}api/update-coupon`;
+        await axios.get(`${url}${query}`);
         const {
           data: { coupons }
         } = await axios.get(
