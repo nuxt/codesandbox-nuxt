@@ -29,13 +29,7 @@
               <img :src="coupon.image" @load="couponImageLoaded(coupon)">
               <div class="content" v-if="coupon.loaded">
                 <div class="vendor">{{coupon.vendor}}</div>
-                <h3 class="title">
-                  {{coupon.title}}
-                  <!--<span
-                  class="badge-empty-v2"
-                  v-if="!coupon.active"
-                  >Bald&nbsp;wieder&nbsp;verfügbar!</span>-->
-                </h3>
+                <h3 class="title">{{coupon.title}}</h3>
                 <p>{{coupon.description}}</p>
                 <div class="badge-empty-v1" v-if="!coupon.active">Bald wieder verfügbar!</div>
               </div>
@@ -148,10 +142,16 @@ export default {
   created() {
     this.setUserId();
   },
+  mounted() {
+    setTimeout(() => {
+      this.coupons.forEach(c => {
+        c.loaded = true;
+      });
+    }, 1000);
+  },
   methods: {
     couponImageLoaded(coupon) {
       const i = this.coupons.findIndex(c => c.id === coupon.id);
-      console.log("Image loaded!");
       this.coupons[i].loaded = true;
     },
     setUserId() {
