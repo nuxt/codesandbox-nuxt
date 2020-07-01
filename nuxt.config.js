@@ -1,4 +1,5 @@
 console.log("Google Analytics Key: ", process.env.GOOGLE_ANALYTICS_ID);
+const bodyParser = require("body-parser");
 
 export default {
   /*
@@ -80,12 +81,16 @@ export default {
   ],
 
   serverMiddleware: [
+    bodyParser.json(),
     { path: "/api/logger", handler: "~/api/logger.js" },
     { path: "/api/coupons", handler: "~/api/coupons.js" },
     { path: "/api/admin-coupons", handler: "~/api/adminCoupons.js" },
     { path: "/api/update-coupon", handler: "~/api/updateCoupon.js" },
     { path: "/api/login", handler: "~/api/login.js" },
     { path: "/api/chart", handler: "~/api/chart.js" },
-    { path: "/api/submit", handler: "~/api/submitCoupon.js" }
+    { path: "/api/submit", handler: "~/api/submitCoupon.js" },
+    { path: "/api/admin-file", handler: "~/api/adminFile.js" },
+    { path: "/api/raw-coupon", handler: "~/api/rawCoupon.js" },
+    { path: "/api/save-coupon", handler: "~/api/saveCoupon.js" }
   ]
 };

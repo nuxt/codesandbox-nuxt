@@ -6,7 +6,7 @@
     "vendor": "Holz & Hygge",
     "title": "Kaufe Eins erhalte Zwei",
     "description": "Beim Kauf von 2 Heißgetränken erhälst du das günstigere umsonst",
-    "image": "./Holz&Hygge2_1.jpg",
+    "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAADtJREFUSA1jtLW1/c9AQ8BEQ7PBRo9aQDCER4NoNIgIhgBBBaOpaDSICIYAQQWjqWg0iAiGAEEFNE9FAG3uAeZT5P+eAAAAAElFTkSuQmCC",
     "submit": {
       "info": "Du kaufst ein Heißgetränk und bekommst zwei. Scanne dazu den Freischaltcode vorort im Geschäft.",
       "code": "123"

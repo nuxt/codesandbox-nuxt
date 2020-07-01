@@ -15,6 +15,8 @@
             <th>Usage</th>
             <th>Balance</th>
             <th>Code</th>
+            <th>Config</th>
+            <th>Bild</th>
             <th>Active?</th>
           </tr>
         </thead>
@@ -39,6 +41,17 @@
             </td>
             <td>{{ coupon.submit.code }}</td>
             <td>
+              <img
+                src="~/assets/images/settings.svg"
+                alt="Settings"
+                @click="openSettings(coupon.id)"
+                class="settings-icon"
+              >
+            </td>
+            <td>
+              <input type="file" @change="uploadFile(coupon.id, $event)">
+            </td>
+            <td>
               <client-only>
                 <ToggleButton
                   :style="{ transition: 'opacity 0.3s ease-in', opacity: isLoading ? '0.3' : '1' }"
@@ -50,6 +63,19 @@
           </tr>
         </tbody>
       </table>
+      <div class="editor" v-if="rawCoupon">
+        <h2>
+          Gutschein Konfigurieren
+          <img
+            src="~/assets/images/close.svg"
+            alt="Close"
+            @click="rawCoupon = ''"
+            class="close-icon"
+          >
+        </h2>
+        <textarea name="raw-coupon" id="raw-coupon" cols="100" rows="30" v-model="rawCoupon"></textarea>
+        <button type="button" @click="saveRawCoupon">Speichern</button>
+      </div>
     </div>
     <div class="footer">
       <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>|
@@ -66,10 +92,12 @@ import cookieparser from "cookieparser";
 export default {
   name: "AdminPage",
   middleware: "isAdmin",
+  layout: "admin",
   data() {
     return {
       error: "",
-      isLoading: false
+      isLoading: false,
+      rawCoupon: ""
     };
   },
   components: {
@@ -99,6 +127,73 @@ export default {
     }
   },
   methods: {
+    async saveRawCoupon() {
+      try {
+        const couponToSave = JSON.parse(this.rawCoupon);
+        const response = await axios.post(
+          `${process.env.SANDBOX_URL}api/save-coupon`,
+          {
+            coupon: couponToSave,
+            token: cookie.get("token")
+          }
+        );
+        this.rawCoupon = "";
+      } catch (e) {
+        this.error = "Konnte nicht gespeichert werden.";
+      }
+    },
+    async openSettings(couponId) {
+      const {
+        data: { rawCoupon }
+      } = await axios.get(
+        `${
+          process.env.SANDBOX_URL
+        }api/raw-coupon?coupon_id=${couponId}&t=${cookie.get("token")}`
+      );
+      this.rawCoupon = rawCoupon;
+    },
+    convertFileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+    },
+    async uploadFile(couponId, event) {
+      if (!event.target.files[0]) return;
+      const exts = [".jpg", ".png", ".jpeg", ".JPG", ".PNG", ".JPEG"];
+      if (
+        !new RegExp("(" + exts.join("|").replace(/\./g, "\\.") + ")$").test(
+          event.target.value
+        )
+      ) {
+        this.error = "Die Datei hat ein falsches Format. Erlaubt: JPG oder PNG";
+        return;
+      }
+      if (event.target.files[0].size / 1024 / 1024 > 1) {
+        this.error = "Datei zu groß. Sollte kleiner als 1MB sein!";
+        return;
+      }
+      const extension = event.target.value.split(".").pop();
+      const fileAsBase64String = await this.convertFileToBase64(
+        event.target.files[0]
+      );
+      try {
+        const response = await axios.post(
+          `${process.env.SANDBOX_URL}api/admin-file`,
+          {
+            couponId,
+            extension,
+            file: fileAsBase64String,
+            token: cookie.get("token")
+          }
+        );
+        console.log("Response: ", response);
+      } catch (e) {
+        this.error = "Bild konnte nicht hochgeladen werden.";
+      }
+    },
     logout() {
       cookie.remove("token");
       this.$router.push("/login");
@@ -171,5 +266,22 @@ input[type="number"] {
 
 .error {
   color: red;
+}
+
+.close-icon:hover,
+.settings-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.close-icon {
+  margin-bottom: -8px;
+  display: inline-block;
+  float: right;
+}
+
+h2 {
+  font-weight: bold;
+  margin-top: 32px;
 }
 </style>
