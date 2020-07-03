@@ -11,6 +11,7 @@ yarn-error.log*
 data/
 data
 data/**
+data/*.json
 
 # Runtime data
 pids
