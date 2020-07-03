@@ -9,9 +9,10 @@ yarn-error.log*
 
 # ignore data changes from production and reverse
 data/
-data
+/data
 data/**
 data/*.json
+/data/
 
 # Runtime data
 pids
