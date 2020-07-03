@@ -5,7 +5,7 @@
       <div class="content">
         <h1>heylocal – Gutscheine für Jena!</h1>
         <p v-if="error" class="error">{{ error }}</p>
-        <p>Sichere dir jeden Tag einen Gutschein!</p>
+        <p>Sichere dir jeden Tag einen Gutschein</p>
         <p class="small">(solange der Vorrat reicht)</p>
         <div id="info-text-submitted">
           <label>Erfolgreich eingelöst!</label>
