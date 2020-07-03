@@ -84,3 +84,5 @@ dist
 .idea
 /static/.DS_Store
 /.DS_Store
+/data/chart.json
+/data/coupons.json
