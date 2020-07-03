@@ -58,7 +58,7 @@
         </button>
         <div class="modal-content" v-if="selectedCoupon.active">
           <h3>Gutschein aktivieren</h3>
-          <p>Sichere dir jetzt diesen Gutschein und löse ihn vor Ort im Geschäft ein. Danach kannst du dir einen neuen Gutschein sichern.</p>
+          <p>Sichere dir jetzt diesen Gutschein und löse ihn vor Ort im Geschäft ein. Nach dem Einlösen kannst du dir einen neuen Gutschein sichern.</p>
           <button
             id="modal-primary-button"
             class="button-primary"
