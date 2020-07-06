@@ -84,8 +84,10 @@ import axios from "axios";
 import Cookie from "js-cookie";
 import cookieparser from "cookieparser";
 
+console.log("index");
+
 export default {
-  middleware: ["hostCheck", "hasNoActiveCoupon"],
+  middleware: "hasNoActiveCoupon",
   data() {
     return {
       selectedCoupon: undefined,
@@ -137,6 +139,20 @@ export default {
   computed: {
     loading() {
       return this.coupons.some(c => !c.loaded);
+    }
+  },
+  beforeCreate() {
+    if (process.client && process.env.NODE_ENV !== "development") {
+      let url = window.location.href;
+      if (!url.includes("https")) {
+        url = url.replace("http://", "https://");
+      }
+      if (!url.includes("www")) {
+        url = url.replace("https://", "https://www");
+      }
+      if (url !== window.location.href) {
+        window.location.href = url;
+      }
     }
   },
   created() {
