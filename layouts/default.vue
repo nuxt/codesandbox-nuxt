@@ -400,6 +400,10 @@ p.small {
   text-shadow: 0px 0px 40px rgb(255, 255, 255);
 }
 
+button:focus {
+  outline: 0;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -522,6 +526,20 @@ p.small {
   border: solid 4px black;
   border-bottom-color: transparent;
   margin: 20vh auto;
+}
+
+.button-primary.loading:after {
+  content: "";
+  display: block;
+  animation: rotate 0.7s linear infinite;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: solid 2px white;
+  border-bottom-color: transparent;
+  float: right;
+  margin: 2px 8px 0 -24px;
 }
 
 @keyframes shake {
