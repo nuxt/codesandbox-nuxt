@@ -2,6 +2,7 @@ import admin from "firebase-admin";
 const serviceAccount = JSON.parse(process.env.FIREBASE);
 
 let db;
+let prefix = process.env.NODE_ENV === "development" ? "test-" : "";
 
 function _init() {
   if (db) return;
@@ -18,7 +19,7 @@ function _init() {
 async function save(type, key, data) {
   _init();
   await db
-    .collection(type)
+    .collection(prefix + type)
     .doc(key)
     .set(data);
   console.log("[filesystem] Stored: ", type, key);
@@ -27,14 +28,8 @@ async function save(type, key, data) {
 async function getAll(type) {
   _init();
   try {
-    const querySnapshot = await db.collection(type).get();
+    const querySnapshot = await db.collection(prefix + type).get();
     return querySnapshot.docs.map(doc => doc.data());
-    /*const docs = [];
-    querySnapshot.forEach(doc => {
-      console.log("[filesystem] snapshot value: ", doc);
-      docs.push(doc);
-    });
-    return docs;*/
   } catch (e) {
     console.error("[filesystem] Error on getAll: ", e);
     return [];
