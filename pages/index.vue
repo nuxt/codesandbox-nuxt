@@ -85,7 +85,7 @@ import Cookie from "js-cookie";
 import cookieparser from "cookieparser";
 
 export default {
-  middleware: "hasNoActiveCoupon",
+  middleware: ["hostCheck", "hasNoActiveCoupon"],
   data() {
     return {
       selectedCoupon: undefined,
