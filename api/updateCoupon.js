@@ -1,10 +1,10 @@
 import { jsonResponse } from "../util/jsonResponse";
-import fs from "fs";
-import path from "path";
 import url from "url";
+import filesystem from "./service/filesystem";
+import hash from "js-sha1";
 
-export default function(req, res, next) {
-  let data, coupons;
+export default async function(req, res, next) {
+  let data;
   try {
     data = JSON.parse(JSON.stringify(url.parse(req.url, true).query));
     data.active = data.active === "true";
@@ -12,25 +12,12 @@ export default function(req, res, next) {
     return jsonResponse(res, {}, 400);
   }
 
-  if (data.token !== require("js-sha1")("boomyeah123456qwertz")) {
+  if (data.token !== hash(process.env.secret)) {
     jsonResponse(res, { error: "Wrong token" }, 401);
   }
   delete data.token;
 
-  try {
-    coupons = JSON.parse(
-      fs.readFileSync(path.resolve(__dirname, "../data/coupons.json"), "utf8")
-    );
-  } catch (e) {
-    return jsonResponse(
-      res,
-      {
-        error:
-          "Ein interner Fehler ist aufgetreten. Coupons sind nicht richtig konfiguriert."
-      },
-      500
-    );
-  }
+  const coupons = await filesystem.getAll("coupon");
 
   const couponIndex = coupons.findIndex(c => c.id === data.id);
   if (couponIndex === -1) {
@@ -52,11 +39,8 @@ export default function(req, res, next) {
   } catch (e) {
     console.error("Error on update: ", e);
   }
-  fs.writeFileSync(
-    path.resolve(__dirname, "../data/coupons.json"),
-    JSON.stringify(coupons),
-    "utf8"
-  );
+
+  filesystem.save("coupon", coupons[couponIndex].id, coupons[couponIndex]);
 
   jsonResponse(res, {}, 200);
 }

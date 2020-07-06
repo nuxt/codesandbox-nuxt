@@ -1,5 +1,6 @@
 import { jsonResponse } from "../util/jsonResponse";
 import url from "url";
+import hash from "js-sha1";
 
 export default function(req, res, next) {
   let password;
@@ -11,11 +12,11 @@ export default function(req, res, next) {
     return jsonResponse(res, {}, 400);
   }
 
-  if (password !== "yeahyeah") {
+  if (password !== process.env.ADMIN_PASSWORD) {
     return jsonResponse(res, { error: "Wrong credentials." }, 401);
   }
 
   jsonResponse(res, {
-    token: require("js-sha1")("boomyeah123456qwertz")
+    token: hash(process.env.secret)
   });
 }

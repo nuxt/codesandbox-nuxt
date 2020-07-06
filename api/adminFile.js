@@ -1,29 +1,15 @@
 import { jsonResponse } from "../util/jsonResponse";
-import path from "path";
-import fs from "fs";
+import hash from "js-sha1";
+import filesystem from "./service/filesystem";
 
-export default function(req, res, next) {
-  let coupons;
+export default async function(req, res, next) {
   let { token, file, couponId } = req.body;
 
-  if (token !== require("js-sha1")("boomyeah123456qwertz")) {
+  if (token !== hash(process.env.secret)) {
     jsonResponse(res, { error: "Wrong token" }, 401);
   }
 
-  try {
-    coupons = JSON.parse(
-      fs.readFileSync(path.resolve(__dirname, "../data/coupons.json"), "utf8")
-    );
-  } catch (e) {
-    return jsonResponse(
-      res,
-      {
-        error:
-          "Ein interner Fehler ist aufgetreten. Coupons sind nicht richtig konfiguriert."
-      },
-      500
-    );
-  }
+  const coupons = await filesystem.getAll("coupon");
 
   const couponIndex = coupons.findIndex(c => c.id === couponId);
   if (couponIndex === -1) {
@@ -36,11 +22,7 @@ export default function(req, res, next) {
 
   coupons[couponIndex].image = file;
 
-  fs.writeFileSync(
-    path.resolve(__dirname, "../data/coupons.json"),
-    JSON.stringify(coupons),
-    "utf8"
-  );
+  filesystem.save("coupon", coupons[couponIndex].id, coupons[couponIndex]);
 
   jsonResponse(res, {
     coupons

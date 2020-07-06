@@ -1,39 +1,11 @@
 import { jsonResponse } from "../util/jsonResponse";
-import fs from "fs";
-import path from "path";
+import filesystem from "./service/filesystem";
 
-export default function(req, res, next) {
-  if (!fs.existsSync(path.resolve(__dirname, "../data/"))) {
-    console.log("Data does not exists!");
-    fs.mkdirSync(path.resolve(__dirname, "../data/"));
-  } else {
-    console.log("Data does exist.");
-  }
-
-  if (!fs.existsSync(path.resolve(__dirname, "../data/coupons.json"))) {
-    console.log("Coupons data does not exists!");
-    fs.writeFileSync(
-      path.resolve(__dirname, "../data/coupons.json"),
-      "[]",
-      "utf8"
-    );
-  }
-
-  if (!fs.existsSync(path.resolve(__dirname, "../data/chart.json"))) {
-    console.log("Cart data does not exists!");
-    fs.writeFileSync(
-      path.resolve(__dirname, "../data/chart.json"),
-      "{}",
-      "utf8"
-    );
-  }
-
-  const data = fs.readFileSync(
-    path.resolve(__dirname, "../data/coupons.json"),
-    "utf8"
-  );
+export default async function(req, res, next) {
+  const coupons = await filesystem.getAll("coupon");
+  //console.log("[coupons] from storage: ", coupons);
   jsonResponse(res, {
-    coupons: JSON.parse(data)
+    coupons: coupons
       .filter(c => c.active)
       .map(coupon => {
         if (coupon.balance === 0 || coupon.usageCount >= coupon.balance) {
