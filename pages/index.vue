@@ -18,6 +18,7 @@
           wieder vorbei.
         </div>
         <div id="coupon-list">
+          <div v-if="loading" class="spinner"></div>
           <transition-group name="fade">
             <div
               v-for="coupon in coupons"
@@ -35,7 +36,6 @@
               </div>
             </div>
           </transition-group>
-          <div v-if="loading" class="spinner"></div>
         </div>
         <div class="footer">
           <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>&nbsp;|&nbsp;
