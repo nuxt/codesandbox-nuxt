@@ -61,6 +61,7 @@
           <p>Sichere dir jetzt diesen Gutschein und löse ihn vor Ort im Geschäft ein. Nach dem Einlösen kannst du dir einen neuen Gutschein sichern.</p>
           <button
             id="modal-primary-button"
+            :class="{ loading: activatingCoupon }"
             class="button-primary"
             @click="activateCoupon(selectedCoupon)"
           >Aktivieren</button>
@@ -92,7 +93,8 @@ export default {
     return {
       selectedCoupon: undefined,
       showModal: false,
-      error: undefined
+      error: undefined,
+      activatingCoupon: false
     };
   },
   async asyncData({ params, req }) {
@@ -141,20 +143,6 @@ export default {
       return this.coupons.some(c => !c.loaded);
     }
   },
-  beforeCreate() {
-    if (process.client && process.env.NODE_ENV !== "development") {
-      let url = window.location.href;
-      if (!url.includes("https")) {
-        url = url.replace("http://", "https://");
-      }
-      if (!url.includes("www")) {
-        url = url.replace("https://", "https://www");
-      }
-      if (url !== window.location.href) {
-        window.location.href = url;
-      }
-    }
-  },
   created() {
     this.setUserId();
   },
@@ -193,6 +181,7 @@ export default {
       this.selectedCoupon = coupon;
     },
     activateCoupon(coupon) {
+      this.activatingCoupon = true;
       Cookie.set("active_coupon_id", coupon.id, { expires: 1 /* days */ });
       Cookie.set("active_coupon_expiry", Date.now() + 1000 * 60 * 60 * 24, {
         expires: 1 /* days */
