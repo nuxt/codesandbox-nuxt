@@ -87,7 +87,6 @@ export default {
     { path: "/api/admin-coupons", handler: "~/api/adminCoupons.js" },
     { path: "/api/update-coupon", handler: "~/api/updateCoupon.js" },
     { path: "/api/login", handler: "~/api/login.js" },
-    { path: "/api/chart", handler: "~/api/chart.js" },
     { path: "/api/submit", handler: "~/api/submitCoupon.js" },
     { path: "/api/admin-file", handler: "~/api/adminFile.js" },
     { path: "/api/raw-coupon", handler: "~/api/rawCoupon.js" },

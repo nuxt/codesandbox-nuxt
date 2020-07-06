@@ -1,9 +1,9 @@
 import { jsonResponse } from "../util/jsonResponse";
-import fs from "fs";
-import path from "path";
 import url from "url";
+import hash from "js-sha1";
+import filesystem from "./service/filesystem";
 
-export default function(req, res, next) {
+export default async function(req, res, next) {
   let token;
 
   try {
@@ -13,17 +13,12 @@ export default function(req, res, next) {
     return jsonResponse(res, {}, 400);
   }
 
-  if (token !== require("js-sha1")("boomyeah123456qwertz")) {
+  if (token !== hash(process.env.secret)) {
     jsonResponse(res, { error: "Wrong token" }, 401);
   }
 
-  const data = fs.readFileSync(
-    path.resolve(__dirname, "../data/coupons.json"),
-    "utf8"
-  );
+  const coupons = await filesystem.getAll("coupon");
   jsonResponse(res, {
-    coupons: JSON.parse(data).map(coupon => {
-      return coupon;
-    })
+    coupons
   });
 }
