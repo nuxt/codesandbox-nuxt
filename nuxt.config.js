@@ -1,5 +1,6 @@
 console.log("Google Analytics Key: ", process.env.GOOGLE_ANALYTICS_ID);
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 export default {
   /*
@@ -81,6 +82,7 @@ export default {
   ],
 
   serverMiddleware: [
+    cors(),
     bodyParser.json({ limit: "50mb" }),
     { path: "/api/logger", handler: "~/api/logger.js" },
     { path: "/api/coupons", handler: "~/api/coupons.js" },
