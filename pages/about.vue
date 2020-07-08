@@ -1,37 +1,44 @@
 <template>
   <div class="container">
-    <div>
-      <h1>Hello from <span class="name">{{ name }}</span>.</h1>
-      <p><NLink to="/" class="button--grey">Back home</NLink></p>
+    <nuxt-link to="/">
+      <div class="button"/>
+    </nuxt-link>
+
+    <div class="grid">
+      <img class="img-hero" :src="require('~/assets/foto-projeto.png')">
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  asyncData() {
-    return {
-      name: (process.server ? 'server' : 'client')
-    }
-  }
-}
+export default {};
 </script>
 
 <style scoped>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+img {
+  width: 100%;
+  height: auto;
 }
-h1 {
-  font-weight: 400;
+
+.button {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  background-color: red;
+  top: 0;
+  right: 0;
 }
-.name {
-  color: #00C48D;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 20px;
+  width: calc(100% - 40px);
+  margin: 100px 0px 100px 50%;
+  transform: translateX(-50%);
 }
-p {
-  margin-top: 20px;
+
+.img-hero {
+  grid-column: 1/6;
 }
 </style>
