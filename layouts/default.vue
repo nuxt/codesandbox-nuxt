@@ -110,22 +110,33 @@ h1 {
 }
 
 h2 {
-  margin: 1rem 20px 1rem 20px;
+  margin: 2rem 20px 1rem 20px;
   font-size: 20px;
-  font-weight: 400;
-  line-height: 20px;
+  font-weight: 700;
+  line-height: 1.3;
 }
 h3 {
   margin: 1rem 20px 1rem 20px;
   font-size: 15px;
-  font-weight: 400;
-  line-height: 10px;
+  font-weight: 600;
+  line-height: 1.35;
 }
 p {
   margin: 0rem 20px 1rem 20px;
 }
 p.small {
   font-size: 15px;
+}
+
+table {
+  margin: 1rem 20px 1rem 20px;
+  font-size: 13px;
+}
+thead {
+  font-weight: 600;
+}
+td {
+  vertical-align: top;
 }
 
 .content {
@@ -327,7 +338,8 @@ p.small {
   font-size: 17px;
   margin: 0rem 16px 0.25rem 16px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 400;
+  line-height: 1.5;
   letter-spacing: 0.03rem;
 }
 
