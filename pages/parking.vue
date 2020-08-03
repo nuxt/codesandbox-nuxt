@@ -56,11 +56,10 @@
       async asyncData() {
          try {
             const parkingPlaces = await axios.get(
-               `http://localhost:8080/api/v1/parking`
+               `${process.env.PARKING_SERVER}/api/v1/parking`
             );
             return parkingPlaces.data;
          } catch (e) {
-            console.log("Error: ", e);
             return {parkingPlaces: []};
          }
       },
@@ -68,7 +67,6 @@
          onMarkerClicked(parkingPlace) {
             this.center = parkingPlace.coordinates;
             this.selectedParkingPlace = parkingPlace;
-            console.log("SELECTED:", parkingPlace);
          },
 
          reset() {
