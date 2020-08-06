@@ -18,7 +18,6 @@
       },
       computed: {
          capacity() {
-            console.log(this.free);
             return this.free ? `${this.free} Parkplätze frei` : `${this.total} Parkplätze`;
          }
       }

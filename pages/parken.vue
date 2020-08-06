@@ -15,6 +15,7 @@
                :clickable="true"
                :draggable="false"
                :title="parkingPlace.name"
+               :icon="getMarker(parkingPlace)"
                @click="onMarkerClicked(parkingPlace)"
             />
          </GmapCluster>
@@ -29,6 +30,7 @@
    import axios from "axios"
    import GmapCluster from 'vue2-google-maps/dist/components/cluster' // replace src with dist if you have Babel issues
    import ParkingPlaceDetail from "../components/parking/ParkingPlaceDetail"
+   import {getMarkerIcon} from "../util/MapIconUtil"
 
    export default {
       name: "parking",
@@ -56,7 +58,7 @@
       async asyncData() {
          try {
             const parkingPlaces = await axios.get(
-               `${process.env.PARKING_SERVER}/api/v1/parking`
+               `${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/parking`
             );
             return parkingPlaces.data;
          } catch (e) {
@@ -72,6 +74,10 @@
          reset() {
             this.selectedParkingPlace = undefined;
             return false;
+         },
+
+         getMarker(parkingPlace) {
+            return getMarkerIcon(this.selectedParkingPlace === parkingPlace, parkingPlace.status.isDynamic, parkingPlace.objectType === "Parkhaus", true, parkingPlace.capacity.free);
          }
       }
    }
@@ -90,6 +96,7 @@
    .fade-enter-active, .fade-leave-active {
       transition: opacity 1.5s;
    }
+
    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
    {
       opacity: 0;

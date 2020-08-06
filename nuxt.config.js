@@ -27,7 +27,7 @@ export default {
         content: "Heylocal"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }, { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }]
   },
 
   /*
@@ -97,6 +97,7 @@ export default {
     { path: "/api/submit", handler: "~/api/submitCoupon.js" },
     { path: "/api/admin-file", handler: "~/api/adminFile.js" },
     { path: "/api/raw-coupon", handler: "~/api/rawCoupon.js" },
-    { path: "/api/save-coupon", handler: "~/api/saveCoupon.js" }
+    { path: "/api/save-coupon", handler: "~/api/saveCoupon.js" },
+     "~/api/selectiveSSR"
   ]
 };
