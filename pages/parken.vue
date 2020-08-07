@@ -2,7 +2,7 @@
    <div>
       <GmapMap
          :center="center"
-         :zoom="15"
+         :zoom="zoom"
          :options="options"
          id="map"
          @click="reset"
@@ -45,24 +45,51 @@
                rotateControl: false,
                fullscreenControl: false,
                disableDefaultUi: true,
-               clickableIcons: false
+               clickableIcons: false,
+               styles: [
+                  {
+                     featureType: 'transit',
+                     elementType: 'labels.icon',
+                     stylers: [{visibility: 'off'}]
+                  }
+               ]
             },
-            center: {
-               lat: 50.928804,
-               lng: 11.589303
-            },
+            center: undefined,
             parkingPlaces: [],
             selectedParkingPlace: undefined
          }
       },
-      async asyncData() {
+      async asyncData({query}) {
          try {
-            const parkingPlaces = await axios.get(
-               `${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/parking`
-            );
-            return parkingPlaces.data;
+            const {parkingPlaces, customer} = (await axios.get(
+               `${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/map`,
+               {
+                  params: {
+                     apiKey: query["api-key"],
+                     filter: query["filter"]
+                  }
+               }
+            )).data;
+
+            let zoom = 15, coordinates = {
+               lat: 50.928804,
+               lng: 11.589303
+            };
+            if(customer) {
+               zoom = customer.zoom || zoom;
+               coordinates = customer.coordinates || coordinates;
+            }
+            return {
+               parkingPlaces: parkingPlaces,
+               center: coordinates,
+               zoom: zoom
+            };
          } catch (e) {
-            return {parkingPlaces: []};
+            return {parkingPlaces: [], center: {
+                  lat: 50.928804,
+                  lng: 11.589303
+               }
+            };
          }
       },
       methods: {
