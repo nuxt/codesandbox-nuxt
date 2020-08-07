@@ -16,6 +16,5 @@ export const getMarkerIcon = (active, dynamic, carPark, isOpen, free) => {
     style.innerHTML = "@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');";
     iconDom.appendChild(style);
     const iconString = new XMLSerializer().serializeToString(iconDom);
-    console.log("HERE");
     return 'data:image/svg+xml;charset=UTF-8;base64,' + btoa(iconString);
 }

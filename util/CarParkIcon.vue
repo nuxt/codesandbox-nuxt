@@ -128,7 +128,7 @@
                       id="P" fill="#808080"></path>
             </g>
         </g>
-        <FreeSpaces :free="free" v-if="dynamic"></FreeSpaces>
+        <FreeSpaces :free="free" v-if="dynamic && free !== null"></FreeSpaces>
     </svg>
 </template>
 
