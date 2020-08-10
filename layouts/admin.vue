@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+     <Header></Header>
     <Nuxt/>
     <client-only>
       <CookieLaw theme="dark-lime">
@@ -11,13 +12,17 @@
         </div>
       </CookieLaw>
     </client-only>
+     <Footer></Footer>
   </div>
 </template>
 
 <script>
+   import Header from "@/components/admin/AdminHeader"
+   import Footer from "@/components/admin/AdminFooter"
 export default {
   name: "Admin",
   components: {
+     Header, Footer,
     CookieLaw: async () => {
       /* eslint-disable */
       if (process.client) return (await import("vue-cookie-law")).default;
@@ -111,12 +116,6 @@ fieldset {
 }
 
 /* Styling */
-
-html {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
