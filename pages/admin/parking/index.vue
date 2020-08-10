@@ -142,7 +142,6 @@
             this.loading = true;
             try {
                this.customers = (await axios.get(`${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/customer`)).data.customer;
-               console.log("CUSTOMER:", this.customers);
             } catch (e) {
                console.error(e);
                this.error = "Could not load customers";
