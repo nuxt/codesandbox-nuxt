@@ -31,7 +31,7 @@ export default {
         const {
           data: { token }
         } = await axios.get(
-          `${process.env.SANDBOX_URL}api/login?pw=${this.password}`
+          `${process.env.SANDBOX_URL || "http://localhost:3000/"}api/login?pw=${this.password}`
         );
         cookie.set("token", token);
         this.$router.push("/admin");
