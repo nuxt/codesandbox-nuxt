@@ -1,10 +1,6 @@
 <template>
   <section>
     <div class="container">
-      <h1>
-        Admin Panel
-        <small @click="logout">logout</small>
-      </h1>
       <p>Here you can see and manage all configured coupons.</p>
       <div class="error" v-if="error">{{ error }}</div>
       <table class="coupon-list">
@@ -77,10 +73,6 @@
         <textarea name="raw-coupon" id="raw-coupon" cols="100" rows="30" v-model="rawCoupon"></textarea>
         <button type="button" @click="saveRawCoupon">Speichern</button>
       </div>
-    </div>
-    <div class="footer">
-      <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>|
-      <a href="mailto: contact@heylocal.de">Feedback</a>
     </div>
   </section>
 </template>
@@ -226,10 +218,9 @@ export default {
         this.error = "Bild konnte nicht hochgeladen werden.";
       }
     },
-    logout() {
-      cookie.remove("token");
-      this.$router.push("/login");
-    },
+     parking() {
+       this.$router.push("/admin/parking");
+     },
     async updateCouponBalance(coupon, event) {
       this.isLoading = true;
       if (event) {
@@ -277,24 +268,11 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 th,
 td {
   text-align: left;
   padding: 0.5em;
-}
-.footer {
-  padding-top: 2em;
-}
-h1 small {
-  float: right;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 400;
-}
-h1 small:hover {
-  cursor: pointer;
-  color: rgba(0, 0, 0, 1);
 }
 
 input[type="number"] {
