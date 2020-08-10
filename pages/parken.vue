@@ -22,7 +22,7 @@
          </GmapCluster>
          <GmapMarker
             class="small-marker"
-            v-if="customerMarker"
+            v-if="customerMarker.isCustomer"
             :position="customerMarker.coordinates"
             :clickable="true"
             :draggable="false"
@@ -102,7 +102,8 @@
                   coordinates: coordinates,
                   marker: marker,
                   name: name,
-                  zoom: zoom
+                  zoom: zoom,
+                  isCustomer: customer !== undefined
                },
                zoom: zoom
             };
