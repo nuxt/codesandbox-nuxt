@@ -218,9 +218,6 @@ export default {
         this.error = "Bild konnte nicht hochgeladen werden.";
       }
     },
-     parking() {
-       this.$router.push("/admin/parking");
-     },
     async updateCouponBalance(coupon, event) {
       this.isLoading = true;
       if (event) {

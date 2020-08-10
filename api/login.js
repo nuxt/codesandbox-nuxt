@@ -12,11 +12,11 @@ export default function(req, res, next) {
     return jsonResponse(res, {}, 400);
   }
 
-  if (password !== "yeahyeah") {
+  if (password !== process.env.ADMIN_PASSWORD) {
     return jsonResponse(res, { error: "Wrong credentials." }, 401);
   }
 
   jsonResponse(res, {
-    token: hash("blablabla")
+    token: hash(process.env.secret)
   });
 }
