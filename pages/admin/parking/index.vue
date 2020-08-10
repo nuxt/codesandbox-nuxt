@@ -35,6 +35,7 @@
                </td>
                <td>
                   <div class="action-link" @click="customer = tableCustomer; view.edit = true">Edit</div>
+                  <div class="action-link" @click="deleteCustomer(tableCustomer.id)">Delete</div>
                </td>
             </tr>
             </tbody>
@@ -204,6 +205,17 @@
                   headers: {'Content-Type': 'multipart/form-data'}
                });
             }
+         },
+
+         async deleteCustomer(id) {
+            this.loading = true;
+            try {
+               await axios.delete(`${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/customer/${id}`)
+            } catch (e) {
+               console.error(e);
+               this.error = "Could not delete customer";
+            }
+            this.getCustomers();
          }
       }
    }
