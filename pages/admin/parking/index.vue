@@ -35,6 +35,7 @@
                </td>
                <td>
                   <div class="action-link" @click="customer = tableCustomer; view.edit = true">Edit</div>
+                  <div class="action-link" @click="deleteCustomer(tableCustomer.id)">Delete</div>
                </td>
             </tr>
             </tbody>
@@ -121,7 +122,6 @@
             formData.append("marker", files[0]);
 
             this.customer.file = formData;
-            console.log("FILE ADDED");
          },
 
          addCustomer() {
@@ -141,7 +141,6 @@
             this.loading = true;
             try {
                this.customers = (await axios.get(`${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/customer`)).data.customer;
-               console.log("CUSTOMER:", this.customers);
             } catch (e) {
                console.error(e);
                this.error = "Could not load customers";
@@ -172,7 +171,6 @@
          },
 
          async editCustomer() {
-            console.log("EDIT CUSTOMER");
             this.loading = true;
             const customer = this.customer;
             const data = {
@@ -204,6 +202,17 @@
                   headers: {'Content-Type': 'multipart/form-data'}
                });
             }
+         },
+
+         async deleteCustomer(id) {
+            this.loading = true;
+            try {
+               await axios.delete(`${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/customer/${id}`)
+            } catch (e) {
+               console.error(e);
+               this.error = "Could not delete customer";
+            }
+            this.getCustomers();
          }
       }
    }
