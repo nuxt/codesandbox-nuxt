@@ -122,7 +122,6 @@
             formData.append("marker", files[0]);
 
             this.customer.file = formData;
-            console.log("FILE ADDED");
          },
 
          addCustomer() {
@@ -172,7 +171,6 @@
          },
 
          async editCustomer() {
-            console.log("EDIT CUSTOMER");
             this.loading = true;
             const customer = this.customer;
             const data = {
