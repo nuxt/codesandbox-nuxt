@@ -82,6 +82,7 @@
 
    export default {
       name: "AdminParking",
+      middleware: "isAdmin",
       layout: "admin",
       data() {
          return {
