@@ -1,5 +1,5 @@
 <template>
-    <svg style="font-family: Roboto" width="40px" height="56px" viewBox="0 0 40 56" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    <svg width="40px" height="56px" viewBox="0 0 40 56" version="1.1" xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>map_icon_dynamic_parkhaus</title>
         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -227,4 +227,3 @@
         }
     }
 </script>
-
