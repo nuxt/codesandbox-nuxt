@@ -26,15 +26,15 @@
             :position="customerMarker.coordinates"
             :clickable="true"
             :draggable="false"
-            :icon="getCustomerMarker(customerMarker.marker)"
+            :icon="customerMarker.marker"
             @click="onMarkerClicked(customerMarker.coordinates, customerMarker)"
          />
       </GmapMap>
       <transition name="fade">
          <ParkingPlaceDetail :data="selectedParkingPlace" v-if="selectedParkingPlace"></ParkingPlaceDetail>
       </transition>
-      <div class="tds-badge">
-         <img src="@/assets/images/badge_TDSoftware.svg" />
+      <div class="tds-badge" v-if="!customerMarker.isCustomer">
+         <img src="@/assets/images/badge_TDSoftware.svg"/>
       </div>
    </div>
 </template>
@@ -74,6 +74,11 @@
          }
       },
       async asyncData({query}) {
+
+         let zoom = 15, coordinates = {
+            lat: 50.928804,
+            lng: 11.589303
+         }, marker, name;
          try {
             const {parkingPlaces, customer} = (await axios.get(
                `${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/map`,
@@ -84,15 +89,13 @@
                   }
                }
             )).data;
-
-            let zoom = 15, coordinates = {
-               lat: 50.928804,
-               lng: 11.589303
-            }, marker, name;
-            if(customer) {
+            if (customer) {
                zoom = customer.zoom || zoom;
                coordinates = customer.coordinates || coordinates;
-               marker = customer.marker;
+               marker = {
+                  url: `${process.env.PARKING_SERVER || "http://localhost:8080"}/marker/${customer.marker}`,
+                  size: {width: 100, height: 100, f: "px", b: "px"}
+               };
                name = customer.name;
             }
             return {
@@ -108,10 +111,16 @@
                zoom: zoom
             };
          } catch (e) {
-            return {parkingPlaces: [], center: {
-                  lat: 50.928804,
-                  lng: 11.589303
-               }
+            return {
+               parkingPlaces: [], center: coordinates,
+               customerMarker: {
+                  coordinates: coordinates,
+                  marker: marker,
+                  name: name,
+                  zoom: zoom,
+                  isCustomer: false
+               },
+               zoom: zoom
             };
          }
       },
@@ -134,11 +143,6 @@
 
          getMarker(parkingPlace) {
             return getMarkerIcon(this.selectedParkingPlace === parkingPlace, parkingPlace.status.isDynamic, parkingPlace.objectType === "Parkhaus", true, parkingPlace.capacity.free);
-         },
-
-         getCustomerMarker(marker) {
-            if(!marker) return;
-            return `${process.env.PARKING_SERVER || "http://localhost:8080"}/marker/${marker}`;
          }
       }
    }
@@ -169,8 +173,8 @@
       right: 4px;
       z-index: 2;
       img {
-          box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.5);
-       }
+         box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.5);
+      }
    }
 
    .small-marker {
