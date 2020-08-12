@@ -78,7 +78,7 @@
          let zoom = 15, coordinates = {
             lat: 50.928804,
             lng: 11.589303
-         }, marker, name;
+         }, marker, name, isCustomer = false;
          try {
             const {parkingPlaces, customer} = (await axios.get(
                `${process.env.PARKING_SERVER || "http://localhost:8080"}/api/v1/map`,
@@ -90,12 +90,18 @@
                }
             )).data;
             if (customer) {
+               isCustomer = true;
                zoom = customer.zoom || zoom;
                coordinates = customer.coordinates || coordinates;
-               marker = {
-                  url: `${process.env.PARKING_SERVER || "http://localhost:8080"}/marker/${customer.marker}`,
-                  size: {width: 100, height: 100, f: "px", b: "px"}
-               };
+               if(customer.marker) {
+                  marker = {
+                     url: `${process.env.PARKING_SERVER || "http://localhost:8080"}/marker/${customer.marker}`,
+                     scaledSize: {width: 100, height: 100, f: "px", b: "px"}
+                  };
+               } else {
+                  isCustomer = false;
+               }
+
                name = customer.name;
             }
             return {
@@ -106,7 +112,7 @@
                   marker: marker,
                   name: name,
                   zoom: zoom,
-                  isCustomer: customer !== undefined
+                  isCustomer: isCustomer
                },
                zoom: zoom
             };
@@ -118,7 +124,7 @@
                   marker: marker,
                   name: name,
                   zoom: zoom,
-                  isCustomer: false
+                  isCustomer: isCustomer
                },
                zoom: zoom
             };
@@ -127,8 +133,8 @@
       methods: {
          onMarkerClicked(coordinates, context) {
             this.$refs.mapRef.$mapPromise.then((map) => {
-               map.setCenter(coordinates);
                if (context.zoom) {
+                  map.setCenter(coordinates);
                   map.setZoom(context.zoom);
                } else {
                   this.selectedParkingPlace = context;

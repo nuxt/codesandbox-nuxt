@@ -162,68 +162,73 @@
         },
         computed: {
             dynamicInactiveCarPark() {
-                return this.dynamic === true && this.active === false && this.carPark === true && this.isOpen === true;
+                return this.isDynamic() === true && this.active === false && this.carPark === true && this.isOpen === true;
             },
 
             dynamicActiveCarPark() {
-                return this.dynamic === true && this.active === true && this.carPark === true && this.isOpen === true;
+                return this.isDynamic() === true && this.active === true && this.carPark === true && this.isOpen === true;
             },
 
             dynamicInactiveParking() {
-                return this.dynamic === true && this.active === false && this.carPark === false && this.isOpen === true;
+                return this.isDynamic() === true && this.active === false && this.carPark === false && this.isOpen === true;
             },
 
             dynamicActiveParking() {
-                return this.dynamic === true && this.active === true && this.carPark === false && this.isOpen === true;
+                return this.isDynamic() === true && this.active === true && this.carPark === false && this.isOpen === true;
             },
 
             dynamicInactiveCarParkClosed() {
-                return this.dynamic === true && this.active === false && this.carPark === true && this.isOpen === false;
+                return this.isDynamic() === true && this.active === false && this.carPark === true && this.isOpen === false;
             },
 
             dynamicActiveCarParkClosed() {
-                return this.dynamic === true && this.active === true && this.carPark === true && this.isOpen === false;
+                return this.isDynamic() === true && this.active === true && this.carPark === true && this.isOpen === false;
             },
 
             dynamicInactiveParkingClosed() {
-                return this.dynamic === true && this.active === false && this.carPark === false && this.isOpen === false;
+                return this.isDynamic() === true && this.active === false && this.carPark === false && this.isOpen === false;
             },
 
             dynamicActiveParkingClosed() {
-                return this.dynamic === true && this.active === true && this.carPark === false && this.isOpen === false;
+                return this.isDynamic() === true && this.active === true && this.carPark === false && this.isOpen === false;
             },
 
             staticInactiveCarPark() {
-                return this.dynamic === false && this.active === false && this.carPark === true && this.isOpen === true;
+                return this.isDynamic() === false && this.active === false && this.carPark === true && this.isOpen === true;
             },
 
             staticActiveCarPark() {
-                return this.dynamic === false && this.active === true && this.carPark === true && this.isOpen === true;
+                return this.isDynamic() === false && this.active === true && this.carPark === true && this.isOpen === true;
             },
 
             staticInactiveParking() {
-                return this.dynamic === false && this.active === false && this.carPark === false && this.isOpen === true;
+                return this.isDynamic() === false && this.active === false && this.carPark === false && this.isOpen === true;
             },
 
             staticActiveParking() {
-                return this.dynamic === false && this.active === true && this.carPark === false && this.isOpen === true;
+                return this.isDynamic() === false && this.active === true && this.carPark === false && this.isOpen === true;
             },
 
             staticInactiveCarParkClosed() {
-                return this.dynamic === false && this.active === false && this.carPark === true && this.isOpen === false;
+                return this.isDynamic() === false && this.active === false && this.carPark === true && this.isOpen === false;
             },
 
             staticActiveCarParkClosed() {
-                return this.dynamic === false && this.active === true && this.carPark === true && this.isOpen === false;
+                return this.isDynamic() === false && this.active === true && this.carPark === true && this.isOpen === false;
             },
 
             staticInactiveParkingClosed() {
-                return this.dynamic === false && this.active === false && this.carPark === false && this.isOpen === false;
+                return this.isDynamic() === false && this.active === false && this.carPark === false && this.isOpen === false;
             },
 
             staticActiveParkingClosed() {
-                return this.dynamic === false && this.active === true && this.carPark === false && this.isOpen === false;
+                return this.isDynamic() === false && this.active === true && this.carPark === false && this.isOpen === false;
             }
-        }
+        },
+       methods: {
+           isDynamic() {
+              return this.free !== undefined && this.free !== null && this.dynamic;
+           }
+       }
     }
 </script>
