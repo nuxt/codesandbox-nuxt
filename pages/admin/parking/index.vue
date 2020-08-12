@@ -31,7 +31,10 @@
                   </div>
                </td>
                <td>
-                  <img class="customer-marker" :src="getCustomerMarker(tableCustomer)"/>
+                  <img class="customer-marker" :src="getCustomerMarker(tableCustomer)" v-if="tableCustomer.marker"/>
+                  <div v-else>
+                     No Marker
+                  </div>
                </td>
                <td>
                   <div class="action-link" @click="customer = tableCustomer; view.edit = true">Edit</div>
