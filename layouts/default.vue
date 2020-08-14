@@ -27,6 +27,9 @@ export default {
 
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 /****** Elad Shechter's RESET *******/
 /*** box sizing border-box for all elements ***/
 *,
@@ -87,8 +90,9 @@ fieldset {
 /* Styling */
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-variant-numeric: proportional-nums;
+  letter-spacing: 0.01em;
   margin: 0 auto;
   max-width: 500px;
   font-size: 17px;
@@ -100,7 +104,7 @@ h1 {
   margin: 2rem 20px 1rem 20px;
   font-size: 34px;
   font-weight: 700;
-  line-height: 41px;
+  line-height: 1.25;
 }
 
 h2 {
@@ -112,8 +116,7 @@ h2 {
 h3 {
   margin: 1rem 20px 1rem 20px;
   font-size: 15px;
-  font-weight: 600;
-  line-height: 1.35;
+  font-weight: 500;
 }
 p {
   margin: 0rem 20px 1rem 20px;
@@ -127,7 +130,7 @@ table {
   font-size: 13px;
 }
 thead {
-  font-weight: 600;
+  font-weight: 500;
 }
 td {
   vertical-align: top;
@@ -135,6 +138,22 @@ td {
 
 .content {
   padding: 0 0 0 0;
+}
+
+.logo {
+  display: block;
+  width: 60%;
+  height: auto;
+  margin: 3rem auto;
+}
+
+.intro {
+  font-family: "PT Serif", serif;
+  letter-spacing: 0;
+  font-size: 18px;
+  text-align: center;
+  color: #00495A;
+  margin: 2em 20px 4em 20px;
 }
 
 .wallet-item {
@@ -155,30 +174,31 @@ td {
 .wallet-item .back-button-wrapper .back-button {
   padding: 1rem;
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.02rem;
-  color: rgb(39, 117, 235);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #00495A;
   border-radius: 6px;
 }
 
 .wallet-item .vendor {
-  font-size: 16px;
-  margin: 0 20px 0.25rem 20px;
+  font-size: 15px;
+  margin: 0 20px 0.25em 20px;
   text-transform: uppercase;
   font-weight: 500;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.05em;
+  color: #00495A;
 }
 
 .wallet-item .title {
   margin: 0 20px 0.75rem 20px;
   font-size: 28px;
   font-weight: 700;
-  line-height: 34px;
+  color: #00495A;
 }
 
 .wallet-item .info {
   font-size: 15px;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .wallet-item .maps {
@@ -186,10 +206,10 @@ td {
   display: block;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 1em auto 1.7em auto;
-  padding: 0.9rem 40px 0.9rem 0;
+  margin: 2em auto;
+  padding: 1em 0 1em 34px;
   font-size: 15px;
-  color: rgb(39, 117, 235);
+  color: #ec806f;
 }
 
 .wallet-item .maps::before {
@@ -197,11 +217,12 @@ td {
   display: block;
   content: "";
   top: calc(50% - 12px);
-  right: 0;
+  left: 0;
   width: 24px;
   height: 24px;
-  background-image: url("~assets/images/arrow-right-2.svg");
+  background-image: url("~assets/images/heylocal_pin.svg");
   background-repeat: no-repeat;
+  background-size: 24px 24px;
 }
 
 .wallet-item .validity {
@@ -212,11 +233,13 @@ td {
   font-size: 12px;
   line-height: 2;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .wallet-item .validity .date {
   font-weight: 700;
+  color: #00495A;
 }
 
 .wallet-item .perforation {
@@ -275,12 +298,12 @@ td {
   position: relative;
   color: rgb(255, 255, 255);
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 1rem 1.5rem 1rem 3.5rem;
   border-radius: 100px;
-  letter-spacing: 0.02rem;
-  box-shadow: 0 8px 13px -8px rgba(39, 117, 235, 0.5);
-  background: rgb(39, 117, 235);
+  letter-spacing: 0.03em;
+  box-shadow: none;
+  background: #00495A;
 }
 
 .scanner-link::before {
@@ -303,7 +326,7 @@ td {
   background: rgb(255, 255, 255);
   box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.3);
   transform: scale3d(1, 1, 1);
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease;
   user-select: none;
 }
 
@@ -313,97 +336,94 @@ td {
 }
 
 #coupon-list .coupon .content {
-  position: absolute;
+  position: relative;
   width: 100%;
-  bottom: 0px;
-  left: 0px;
-  padding: 40px 0 0 0;
-  color: rgb(255, 255, 255);
+  padding: 20px 0 0 0;
+  color: #00495A;
   background: rgb(255, 255, 255);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  text-shadow: 0px 0px 40px rgb(0, 0, 0);
 }
 
 #coupon-list .coupon .content .vendor {
-  font-size: 17px;
-  margin: 0rem 16px 0.25rem 16px;
+  font-size: 15px;
+  margin: 0rem 16px 0.11em 16px;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5;
-  letter-spacing: 0.03rem;
+  letter-spacing: 0.05em;
+  text-shadow: none;
 }
 
 #coupon-list .coupon .content .title {
-  margin: 0 16px 0.5rem 16px;
+  margin: 0 16px 0.5em 16px;
   font-size: 28px;
   font-weight: 700;
   line-height: 34px;
+  text-shadow: none;
 }
 
 #coupon-list .coupon .content p {
-  margin: 0em 16px 1rem 16px;
+  margin: 0em 16px 20px 16px;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: none;
 }
 
 #coupon-list .coupon .content .badge-empty-v1 {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   margin: 0;
-  padding: 0.75rem 16px;
+  padding: 0.75em 16px;
   color: rgba(0, 0, 0, 0.8);
-  background: rgb(255, 191, 73);
+  color: rgba(255, 255, 255, 1);
+  background: #EC806F;
   text-align: center;
+  text-shadow: none;
 }
 
 #coupon-list .coupon:hover {
   cursor: pointer;
   transform: scale3d(1, 1, 1);
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
 #coupon-list .coupon:active {
   cursor: pointer;
   transform: scale3d(0.95, 0.95, 0.95);
-  transition: all 0.05s ease;
+  transition: transform 0.05s ease;
 }
 @media (pointer: none), (pointer: coarse) {
   #coupon-list .coupon:hover {
     cursor: pointer;
     transform: scale3d(0.95, 0.95, 0.95);
-    transition: all 0.05s ease;
+    transition: transform 0.05s ease;
   }
 }
 #coupon-list .coupon:link {
   cursor: pointer;
   transform: scale3d(0.95, 0.95, 0.95);
-  transition: all 0.05s ease;
+  transition: transform 0.05s ease;
 }
 
 #coupon-list .coupon.activated {
   color: red;
 }
 
+#coupon-list .coupon.inactive {
+  background: #ffffff;
+}
+
 #coupon-list .coupon.inactive img {
   opacity: 1;
-  filter: grayscale(100%) opacity(35%) brightness(25%);
+  filter: grayscale(100%) opacity(50%);
 }
 #coupon-list .coupon.inactive .content {
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: #ffffff;
 }
 #coupon-list .coupon.inactive .content .vendor,
 #coupon-list .coupon.inactive .content .title,
 #coupon-list .coupon.inactive .content p {
   color: rgba(0, 0, 0, 0.7);
-  text-shadow: 0px 0px 40px rgb(255, 255, 255);
+  text-shadow: none;
 }
 
 button:focus {
@@ -465,7 +485,7 @@ button:focus {
 
 .modal .modal-content-wrapper #detail-modal-close-button span {
   display: block;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.07);
   width: 28px;
   height: 28px;
   border-radius: 16px;
@@ -481,17 +501,17 @@ button:focus {
   display: block;
   text-align: center;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   padding: 14px 16px;
   color: rgb(255, 255, 255);
-  background: rgb(77, 148, 255);
+  background-color: #00495A;
   border-radius: 100px;
-  width: 100%;
   margin: 2rem auto 0 auto;
 }
 
 .modal .modal-content-wrapper .button-primary:active {
-  background: rgb(39, 117, 235);
+  background: #002c36;
 }
 
 .modal .modal-content {
@@ -504,10 +524,12 @@ button:focus {
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
+  color: #00495A;
 }
 .modal .modal-content p {
   margin: 0 0 0.7em 0;
   text-align: center;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .hidden {
@@ -568,22 +590,48 @@ button:focus {
 }
 
 .footer {
-  font-size: 12px;
+  font-size: 15px;
   text-align: center;
-  padding-bottom: 2rem;
+  padding: 1rem 0 2rem 0;
   color: rgba(0, 0, 0, 0.4);
 }
 
-.footer a:link,
-.footer a:visited {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.4);
+.footer .logo {
+  width: 200px;
+  margin: 3rem auto 1rem auto;
 }
 
-.footer a:hover,
-.footer a:active {
+.footer .social-links {
+  display: flex;
+  justify-content: center;
+}
+
+.footer .social-links img {
+  display: block;
+  width: 40px;
+  height: auto;
+  margin: 1rem 0.8rem;
+}
+
+.footer .navi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4rem 20px;
+}
+
+.footer .navi a:link,
+.footer .navi a:visited {
+  display: block;
+  padding: 0.5em;
+  margin: 0.2em;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.7);
+  color: #00495A;
+}
+
+.footer .navi a:hover,
+.footer .navi a:active {
+  text-decoration: none;
 }
 
 #info-text-activated {

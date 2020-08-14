@@ -3,10 +3,17 @@
     <div>
       <!-- Content with list of coupons... -->
       <div class="content">
-        <h1>heylocal – Gutscheine für Jena</h1>
+        <img
+          src="~assets/images/heylocal_logo.svg"
+          alt="heylocal – Deine Gutscheine für Jena"
+          width="200"
+          height="auto"
+          class="logo"
+        >
         <p v-if="error" class="error">{{ error }}</p>
-        <p>Sichere dir jeden Tag einen Gutschein</p>
-        <p class="small">(solange der Vorrat reicht)</p>
+        <p
+          class="intro"
+        >heylocal ist eine Plattform, die Deine lokalen Käufe belohnt. Lokale Händler stellen Angebote in Form von Gutscheinen zur Verfügung und präsentieren die Vielfalt unserer Stadt.</p>
         <div id="info-text-submitted">
           <label>Erfolgreich eingelöst!</label>
           Danke fürs Einlösen und Nutzen von HeyLocal!
@@ -38,8 +45,33 @@
           </transition-group>
         </div>
         <div class="footer">
-          <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>&nbsp;|&nbsp;
-          <a href="mailto: contact@heylocal.de">Feedback</a>
+          <img
+            src="~assets/images/heylocal_logo.svg"
+            alt="heylocal – Deine Gutscheine für Jena"
+            width="200"
+            height="auto"
+            class="logo"
+          >
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/heylocaljena"
+              target="_blank"
+              title="Folge uns bei Facebook"
+            >
+              <img src="~assets/images/facebook_logo.svg" alt="Facebook" width="60" height="60">
+            </a>
+            <a
+              href="https://www.instagram.com/heylocal_/"
+              target="_blanc"
+              title="Folge uns bei Instagram"
+            >
+              <img src="~assets/images/instagram_logo.svg" alt="Instagram" width="60" height="60">
+            </a>
+          </div>
+          <div class="navi">
+            <a href="#">Feedback</a>
+            <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>
+          </div>
         </div>
       </div>
     </div>
