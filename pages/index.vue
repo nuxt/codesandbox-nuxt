@@ -85,8 +85,6 @@ import axios from "axios";
 import Cookie from "js-cookie";
 import cookieparser from "cookieparser";
 
-console.log("index");
-
 export default {
   middleware: "hasNoActiveCoupon",
   data() {
@@ -108,7 +106,7 @@ export default {
       }
       const {
         data: { coupons }
-      } = await axios.get(`${process.env.SANDBOX_URL}api/coupons`);
+      } = await axios.get(`${process.env.SANDBOX_URL || "https://heylocal.herokuapp.com/"}api/coupons`);
       if (submittedCouponId !== undefined) {
         const index = coupons.findIndex(c => c.id === submittedCouponId);
         if (index !== -1) {

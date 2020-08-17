@@ -3,21 +3,20 @@
       <div class="title">
          Admin Panel
       </div>
-      <div class="nav">
-         <div class="nav-item" v-for="navItem in items" :class="{selected: navItem.selected }"
-              @click="navigate(navItem)">
-            {{navItem.name}}
-         </div>
-      </div>
+      <Navigation :items="items"></Navigation>
       <small @click="logout">logout</small>
    </div>
 </template>
 
 <script>
    import cookie from "js-cookie";
+   import Navigation from "@/components/Navigation"
 
    export default {
       name: "AdminHeader",
+      components: {
+         Navigation
+      },
       data() {
          return {
             items: [
@@ -30,6 +29,11 @@
                   name: "Parking",
                   path: "/admin/parking",
                   selected: false
+               },
+               {
+                  name: "Legal",
+                  path: "/admin/legal",
+                  selected: false
                }
             ]
          }
@@ -41,20 +45,6 @@
          });
       },
       methods: {
-         navigate(route) {
-            this.$router.push(route.path);
-            route.selected = true;
-            this.items.forEach((item) => {
-               if(item === route) return;
-               item.selected = false;
-            });
-         },
-
-         isSelected(navItem) {
-            console.log("DOES", navItem.name, "EQUAL", this.selected);
-            return navItem.name === this.selected;
-         },
-
          logout() {
             cookie.remove("token");
             this.$router.push("/admin/login");
@@ -73,20 +63,6 @@
          flex-grow: 1;
          font-size: 25px;
          font-weight: bold;
-      }
-      .nav {
-         flex-grow: 9;
-         display: flex;
-         .nav-item {
-            padding-left: 15px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            &.selected {
-               text-decoration: underline;
-               font-weight: 600;
-            }
-         }
       }
       small {
          flex-grow: 1;
