@@ -1,41 +1,43 @@
 <template>
-   <div>
-      <GmapMap
-         ref="mapRef"
-         :center="center"
-         :zoom="zoom"
-         :options="options"
-         id="map"
-         @click="reset"
-      >
-         <GmapCluster :zoomOnClick="true">
+   <div class="parking-container">
+      <div class="map-container">
+         <GmapMap
+            ref="mapRef"
+            :center="center"
+            :zoom="zoom"
+            :options="options"
+            id="map"
+            @click="reset"
+         >
+            <GmapCluster :zoomOnClick="true">
+               <GmapMarker
+                  :key="index"
+                  v-for="(parkingPlace, index) in parkingPlaces"
+                  :position="parkingPlace.coordinates"
+                  :clickable="true"
+                  :draggable="false"
+                  :title="parkingPlace.name"
+                  :icon="getMarker(parkingPlace)"
+                  @click="onMarkerClicked(parkingPlace.coordinates, parkingPlace)"
+               />
+            </GmapCluster>
             <GmapMarker
-               :key="index"
-               v-for="(parkingPlace, index) in parkingPlaces"
-               :position="parkingPlace.coordinates"
+               v-if="customerMarker.isCustomer"
+               :position="customerMarker.coordinates"
                :clickable="true"
                :draggable="false"
-               :title="parkingPlace.name"
-               :icon="getMarker(parkingPlace)"
-               @click="onMarkerClicked(parkingPlace.coordinates, parkingPlace)"
+               :icon="customerMarker.marker"
+               @click="onMarkerClicked(customerMarker.coordinates, customerMarker)"
             />
-         </GmapCluster>
-         <GmapMarker
-            class="small-marker"
-            v-if="customerMarker.isCustomer"
-            :position="customerMarker.coordinates"
-            :clickable="true"
-            :draggable="false"
-            :icon="customerMarker.marker"
-            @click="onMarkerClicked(customerMarker.coordinates, customerMarker)"
-         />
-      </GmapMap>
-      <transition name="fade">
-         <ParkingPlaceDetail :data="selectedParkingPlace" v-if="selectedParkingPlace"></ParkingPlaceDetail>
-      </transition>
-      <div class="tds-badge" v-if="!customerMarker.isCustomer">
-         <img src="@/assets/images/badge_TDSoftware.svg"/>
+         </GmapMap>
+         <transition name="fade">
+            <ParkingPlaceDetail :data="selectedParkingPlace" v-if="selectedParkingPlace"></ParkingPlaceDetail>
+         </transition>
+         <div class="tds-badge" v-if="!customerMarker.isCustomer">
+            <img src="@/assets/images/badge_TDSoftware.svg"/>
+         </div>
       </div>
+      <Footer :items="footerItems"></Footer>
    </div>
 </template>
 
@@ -44,10 +46,11 @@
    import GmapCluster from 'vue2-google-maps/dist/components/cluster' // replace src with dist if you have Babel issues
    import ParkingPlaceDetail from "../components/parking/ParkingPlaceDetail"
    import {getMarkerIcon} from "../util/MapIconUtil"
+   import Footer from "@/components/parking/Footer"
 
    export default {
       name: "parking",
-      components: {GmapCluster, ParkingPlaceDetail},
+      components: {GmapCluster, ParkingPlaceDetail, Footer},
       data() {
          return {
             options: {
@@ -70,7 +73,13 @@
             center: undefined,
             parkingPlaces: [],
             selectedParkingPlace: undefined,
-            customerMarker: undefined
+            customerMarker: undefined,
+            footerItems: [
+               {
+                  name: "Nutzungsbedingungen",
+                  url: "/nutzungsbedingungen?type=parken"
+               }
+            ]
          }
       },
       async asyncData({query}) {
@@ -93,7 +102,7 @@
                isCustomer = true;
                zoom = customer.zoom || zoom;
                coordinates = customer.coordinates || coordinates;
-               if(customer.marker) {
+               if (customer.marker) {
                   marker = {
                      url: `${process.env.PARKING_SERVER || "http://localhost:8080"}/marker/${customer.marker}`,
                      scaledSize: {width: 100, height: 100, f: "px", b: "px"}
@@ -155,35 +164,36 @@
 </script>
 
 <style lang="scss" scoped>
-   #map {
-      width: 100%;
-      height: 100%;
-      z-index: 1;
+   .map-container {
       position: fixed !important;
       top: 0;
       left: 0;
-   }
-
-   .fade-enter-active, .fade-leave-active {
-      transition: opacity 1.5s;
-   }
-
-   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
-   {
-      opacity: 0;
-   }
-
-   .tds-badge {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      z-index: 2;
-      img {
-         box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.5);
+      bottom: 10px;
+      width: 100%;
+      height: 94vh;
+      #map {
+         width: 100%;
+         height: 100%;
+         z-index: 1;
       }
-   }
 
-   .small-marker {
-      max-height: 30px;
+      .fade-enter-active, .fade-leave-active {
+         transition: opacity 1.5s;
+      }
+
+      .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+      {
+         opacity: 0;
+      }
+
+      .tds-badge {
+         position: absolute;
+         top: 4px;
+         right: 4px;
+         z-index: 2;
+         img {
+            box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.5);
+         }
+      }
    }
 </style>

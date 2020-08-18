@@ -117,8 +117,6 @@ import axios from "axios";
 import Cookie from "js-cookie";
 import cookieparser from "cookieparser";
 
-console.log("index");
-
 export default {
   middleware: "hasNoActiveCoupon",
   data() {
