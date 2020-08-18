@@ -27,7 +27,13 @@ export default {
         content: "Heylocal"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }, { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      }
+    ]
   },
 
   /*
@@ -100,6 +106,7 @@ export default {
     { path: "/api/save-coupon", handler: "~/api/saveCoupon.js" },
     { path: "/api/updateLegal", handler: "~/api/legal/saveText.js" },
     { path: "/api/getLegal", handler: "~/api/legal/getLegalTexts.js" },
+    { path: "/api/removeLegal", handler: "~/api/legal/removeLegal.js" },
     "~/api/selectiveSSR"
   ]
 };
