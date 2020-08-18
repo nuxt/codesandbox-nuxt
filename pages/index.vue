@@ -106,7 +106,7 @@ export default {
       }
       const {
         data: { coupons }
-      } = await axios.get(`${process.env.SANDBOX_URL || "https://heylocal.herokuapp.com/"}api/coupons`);
+      } = await axios.get(`${process.env.SANDBOX_URL}api/coupons`);
       if (submittedCouponId !== undefined) {
         const index = coupons.findIndex(c => c.id === submittedCouponId);
         if (index !== -1) {
