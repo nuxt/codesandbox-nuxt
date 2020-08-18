@@ -47,6 +47,9 @@
 </template>
 
 <script>
+   import axios from "axios";
+   import cookie from "js-cookie";
+   import cookieparser from "cookieparser";
    import Navigation from "@/components/Navigation"
    import HtmlEditor from "@/components/legal/HtmlEditor"
 
@@ -63,7 +66,7 @@
             items: [
                {
                   name: "Parken - Datenschutzbestimmungen",
-                  path: "/legal/parkingTermsOfUse",
+                  id: "/legal/parkingTermsOfUse",
                   description: "TEST"
                }
             ],
@@ -77,6 +80,25 @@
       computed: {
          editorView() {
             return this.view.add || this.view.edit;
+         }
+      },
+      async asyncData({params, req}) {
+         try {
+            let token;
+            if (process.server) {
+               token = cookieparser.parse(req.headers.cookie).token;
+            } else {
+               token = cookie.get("token");
+            }
+            const {
+               data: {legal}
+            } = await axios.get(
+               `${process.env.SANDBOX_URL}api/getLegal?t=${token}`
+            );
+            return {items: legal};
+         } catch (e) {
+            console.log("Error: ", e);
+            return {items: []};
          }
       },
       methods: {
@@ -101,6 +123,7 @@
       text-decoration: underline;
       cursor: pointer;
    }
+
    .close-icon {
       float: right;
       cursor: pointer;

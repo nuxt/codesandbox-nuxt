@@ -1,22 +1,27 @@
 <template>
-   <div class="editable-container" contenteditable="true" @input="updateHTML">
-   </div>
+   <vue-editor @text-change="$emit('input', content)" :editorToolbar="customToolbar" v-model="content"></vue-editor>
 </template>
 
 <script>
+   import { VueEditor } from "vue2-editor";
+
    export default {
       name: "HtmlEditor",
+      components: {
+         VueEditor
+      },
       props: {
          value: {
             type: String
          }
       },
       mounted() {
-         this.$el.innerHTML = this.value;
+         this.content = this.value;
       },
-      methods: {
-         updateHTML: function (e) {
-            this.$emit('input', e.target.innerHTML);
+      data() {
+         return {
+            content: "",
+            customToolbar: [[{ 'header': [1, 2, 3, false] }], ["bold", "italic", "underline"], [{ list: "ordered" }, { list: "bullet" }]]
          }
       }
    }
@@ -43,6 +48,12 @@
             background: white;
             color: black;
          }
+      }
+   }
+
+   /deep/ .ql-formats {
+      button {
+         margin: 0;
       }
    }
 </style>

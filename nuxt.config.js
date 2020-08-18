@@ -98,6 +98,8 @@ export default {
     { path: "/api/admin-file", handler: "~/api/adminFile.js" },
     { path: "/api/raw-coupon", handler: "~/api/rawCoupon.js" },
     { path: "/api/save-coupon", handler: "~/api/saveCoupon.js" },
-     "~/api/selectiveSSR"
+    { path: "/api/updateLegal", handler: "~/api/legal/saveText.js" },
+    { path: "/api/getLegal", handler: "~/api/legal/getLegalTexts.js" },
+    "~/api/selectiveSSR"
   ]
 };

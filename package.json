@@ -30,6 +30,7 @@
     "vue-cookie-law": "1.13.3",
     "vue-js-toggle-button": "1.3.3",
     "vue-qrcode-reader": "2.3.0",
+    "vue2-editor": "^2.10.2",
     "vue2-google-maps": "^0.10.7"
   },
   "keywords": [],
