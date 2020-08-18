@@ -29,7 +29,21 @@ async function getAll(type) {
   _init();
   try {
     const querySnapshot = await db.collection(prefix + type).get();
-    return querySnapshot.docs.map(doc => doc.data());
+    return querySnapshot.docs.map((doc) => doc.data());
+  } catch (e) {
+    console.error("[filesystem] Error on getAll: ", e);
+    return [];
+  }
+}
+
+async function remove(type, key) {
+  _init();
+  try {
+    await db
+      .collection(prefix + type)
+      .doc(key)
+      .delete();
+    return getAll(type);
   } catch (e) {
     console.error("[filesystem] Error on getAll: ", e);
     return [];
@@ -38,5 +52,6 @@ async function getAll(type) {
 
 export default {
   getAll,
-  save
+  save,
+  remove
 };
