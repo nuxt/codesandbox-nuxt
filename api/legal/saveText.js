@@ -16,11 +16,14 @@ export default async function (req, res, next) {
   }
 
   const legalTexts = await filesystem.getAll("legal");
+  legal.id = decodeURIComponent(legal.id);
 
   const legalTextIndex = legalTexts.findIndex((c) => c.id === legal.id);
 
   if (legalTextIndex === -1) {
     legalTexts.push(legal);
+  } else {
+    legalTexts[legalTextIndex] = legal;
   }
 
   filesystem.save("legal", legal.id, legal);

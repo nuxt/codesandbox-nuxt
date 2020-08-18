@@ -1,6 +1,7 @@
 <template>
-  <div v-html="text">
+  <div>
     <div class="error" v-if="error">{{error}}</div>
+    <div v-html="text"></div>
   </div>
 </template>
 
@@ -16,7 +17,6 @@ export default {
       text: ""
     };
   },
-  async asyncData() {},
   mounted() {
     this.load();
   },
@@ -30,7 +30,11 @@ export default {
             this.$route.query.id
           )}`
         );
-        this.text = legal.text;
+        if (legal) {
+          this.text = legal.text;
+        } else {
+          this.error = "Could not load data";
+        }
       } catch (e) {
         console.log("Error: ", e);
         this.error = "could not load data";

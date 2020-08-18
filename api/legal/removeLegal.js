@@ -8,7 +8,7 @@ export default async function (req, res, next) {
   if (token !== hash(process.env.secret)) {
     return jsonResponse(res, { error: "Wrong token" }, 401);
   }
-  const legalTexts = await filesystem.remove("legal", id);
+  const legalTexts = await filesystem.remove("legal", decodeURIComponent(id));
   jsonResponse(res, {
     legal: legalTexts
   });

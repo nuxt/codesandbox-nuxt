@@ -8,6 +8,7 @@
           <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Path</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -20,7 +21,11 @@
               <div>{{ item.name }}</div>
             </td>
             <td>
+              <div>{{ "/legal?id=" + encodeURIComponent(item.id) }}</div>
+            </td>
+            <td>
               <div class="action-link" @click="legal = item; view.edit = true">Edit</div>
+              <div class="action-link" @click="deleteLegal(item)">Delete</div>
             </td>
           </tr>
         </tbody>
@@ -36,10 +41,6 @@
             class="close-icon"
           >
         </h2>
-        <div>
-          <label for="legal-path-input">Path:</label>
-          <input id="legal-path-input" v-model="legal.id" :disabled="view.edit">
-        </div>
         <div>
           <label for="legal-name-input">Name:</label>
           <input id="legal-name-input" v-model="legal.name" :disabled="view.edit">
@@ -69,13 +70,7 @@ export default {
     return {
       error: undefined,
       loading: false,
-      items: [
-        {
-          name: "Parken - Datenschutzbestimmungen",
-          id: "/legal/parkingTermsOfUse",
-          text: "TEST"
-        }
-      ],
+      items: [],
       legal: {},
       view: {
         edit: false,
@@ -111,9 +106,10 @@ export default {
       this.view.add = true;
     },
     async editLegal() {
+      this.loading = true;
       try {
         const legalText = {
-          id: this.legal.id,
+          id: encodeURIComponent(this.legal.name),
           name: this.legal.name,
           text: this.legal.text
         };
@@ -131,6 +127,28 @@ export default {
       } catch (e) {
         console.error(e);
         this.error = "Could not save legal text.";
+      }
+      this.loading = false;
+    },
+    async deleteLegal(item) {
+      try {
+        let token;
+        if (process.server) {
+          token = cookieparser.parse(req.headers.cookie).token;
+        } else {
+          token = cookie.get("token");
+        }
+        const {
+          data: { legal }
+        } = await axios.get(
+          `${process.env.SANDBOX_URL}api/removeLegal?token=${token}&id=${
+            item.id
+          }`
+        );
+        this.items = legal;
+      } catch (e) {
+        console.log("Error: ", e);
+        this.error = "Could not delete item";
       }
     }
   }
