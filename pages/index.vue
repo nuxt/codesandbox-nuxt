@@ -40,6 +40,7 @@
         <div class="footer">
           <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>&nbsp;|&nbsp;
           <a href="mailto: contact@heylocal.de">Feedback</a>
+          <a href="/legal?id=Heylocal%20Nutzungsbedingungen">Nutzungsbedingungen</a>
         </div>
       </div>
     </div>
