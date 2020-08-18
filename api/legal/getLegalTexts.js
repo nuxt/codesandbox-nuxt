@@ -4,11 +4,11 @@ import url from "url";
 
 export default async function (req, res, next) {
   try {
-    let { filter } = url.parse(req.url, true).query;
+    const query = url.parse(req.url, true).query;
     const legalTexts = await filesystem.getAll("legal");
-    if (filter) {
+    if (query && query.filter) {
       return jsonResponse(res, {
-        legal: legalTexts.find((l) => l.id === filter)
+        legal: legalTexts.find((l) => l.id === decodeURIComponent(filter))
       });
     }
     jsonResponse(res, {
