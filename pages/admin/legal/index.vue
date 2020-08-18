@@ -37,14 +37,14 @@
           >
         </h2>
         <div>
+          <label for="legal-path-input">Path:</label>
+          <input id="legal-path-input" v-model="legal.id" :disabled="view.edit">
+        </div>
+        <div>
           <label for="legal-name-input">Name:</label>
           <input id="legal-name-input" v-model="legal.name" :disabled="view.edit">
         </div>
-        <div>
-          <label for="legal-path-input">Path:</label>
-          <input id="legal-path-input" v-model="legal.id">
-        </div>
-        <HtmlEditor v-model="legal.description"></HtmlEditor>
+        <HtmlEditor v-model="legal.text"></HtmlEditor>
         <button type="button" @click="editLegal()" v-if="!loading">Save</button>
       </div>
     </div>
@@ -73,7 +73,7 @@ export default {
         {
           name: "Parken - Datenschutzbestimmungen",
           id: "/legal/parkingTermsOfUse",
-          description: "TEST"
+          text: "TEST"
         }
       ],
       legal: {},
@@ -115,7 +115,7 @@ export default {
         const legalText = {
           id: this.legal.id,
           name: this.legal.name,
-          text: this.legal.description
+          text: this.legal.text
         };
         const {
           data: { legalTexts }

@@ -17,12 +17,13 @@ export default async function (req, res, next) {
 
   const legalTexts = await filesystem.getAll("legal");
 
-  const legalTextIndex = legalTexts.findIndex((c) => c.id === coupon.id);
+  const legalTextIndex = legalTexts.findIndex((c) => c.id === legal.id);
 
   if (legalTextIndex === -1) {
     legalTexts.push(legal);
-    filesystem.save("legal", legal.id, legal);
   }
+
+  filesystem.save("legal", legal.id, legal);
 
   jsonResponse(res, {
     legalTexts
