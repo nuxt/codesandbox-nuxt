@@ -77,7 +77,7 @@ export default {
       footerItems: [
         {
           name: "Nutzungsbedingungen",
-          url: "/legal?id=Nutzungsbedingungen%20Parken"
+          url: "/legal?id=Parken-Nutzungsbedingungen"
         }
       ]
     };
