@@ -8,7 +8,7 @@ export default async function (req, res, next) {
     const legalTexts = await filesystem.getAll("legal");
     if (query && query.filter) {
       return jsonResponse(res, {
-        legal: legalTexts.find((l) => l.id === decodeURIComponent(filter))
+        legal: legalTexts.find((l) => l.id === decodeURIComponent(query.filter))
       });
     }
     jsonResponse(res, {
