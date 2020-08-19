@@ -71,6 +71,7 @@
           <div class="navi">
             <a href="#">Feedback</a>
             <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>
+            <a href="/legal?id=Heylocal-Nutzungsbedingungen">Nutzungsbedingungen</a>
           </div>
         </div>
       </div>
