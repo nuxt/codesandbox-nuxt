@@ -73,6 +73,7 @@
             <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>
             <a href="/legal?id=Heylocal-Nutzungsbedingungen">Nutzungsbedingungen</a>
           </div>
+          <div class="version">version: {{ version }}</div>
         </div>
       </div>
     </div>
@@ -117,6 +118,7 @@
 import axios from "axios";
 import Cookie from "js-cookie";
 import cookieparser from "cookieparser";
+import { version } from "../package.json";
 
 export default {
   middleware: "hasNoActiveCoupon",
@@ -125,7 +127,8 @@ export default {
       selectedCoupon: undefined,
       showModal: false,
       error: undefined,
-      activatingCoupon: false
+      activatingCoupon: false,
+      version: version
     };
   },
   async asyncData({ params, req }) {
