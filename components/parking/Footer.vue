@@ -1,7 +1,7 @@
 <template>
    <div class="footer">
       <div v-for="item in items">
-         <a class="item" :href="item.url">{{item.name}}</a>
+         <a target="_blank" class="item" :href="item.url">{{item.name}}</a>
       </div>
    </div>
 </template>

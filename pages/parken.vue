@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       options: {
-        zoomControl: false,
+        zoomControl: true,
         mapTypeControl: false,
         scaleControl: false,
         streetViewControl: false,
