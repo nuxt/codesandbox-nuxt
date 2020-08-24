@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-     <Header></Header>
+    <Header></Header>
     <Nuxt/>
     <client-only>
       <CookieLaw theme="dark-lime">
@@ -12,17 +12,18 @@
         </div>
       </CookieLaw>
     </client-only>
-     <Footer></Footer>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-   import Header from "@/components/admin/AdminHeader"
-   import Footer from "@/components/admin/AdminFooter"
+import Header from "@/components/admin/AdminHeader";
+import Footer from "@/components/admin/AdminFooter";
 export default {
   name: "Admin",
   components: {
-     Header, Footer,
+    Header,
+    Footer,
     CookieLaw: async () => {
       /* eslint-disable */
       if (process.client) return (await import("vue-cookie-law")).default;
@@ -319,115 +320,7 @@ p.small {
   background-repeat: no-repeat;
 }
 
-#coupon-list .coupon {
-  position: relative;
-  border-radius: 13px;
-  overflow: hidden;
-  margin: 30px 20px;
-  background: rgb(255, 255, 255);
-  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.3);
-  transform: scale3d(1, 1, 1);
-  transition: all 0.4s ease;
-  user-select: none;
-}
-
-#coupon-list .coupon img {
-  width: 100%;
-  display: block;
-}
-
-#coupon-list .coupon .content {
-  position: absolute;
-  width: 100%;
-  bottom: 0px;
-  left: 0px;
-  padding: 40px 0 0 0;
-  color: rgb(255, 255, 255);
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  text-shadow: 0px 0px 40px rgb(0, 0, 0);
-}
-
-#coupon-list .coupon .content .vendor {
-  font-size: 17px;
-  margin: 0rem 16px 0.25rem 16px;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.03rem;
-}
-
-#coupon-list .coupon .content .title {
-  margin: 0 16px 0.5rem 16px;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 34px;
-}
-
-#coupon-list .coupon .content p {
-  margin: 0em 16px 1rem 16px;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-#coupon-list .coupon .content .badge-empty-v1 {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0;
-  padding: 0.75rem 16px;
-  color: rgba(0, 0, 0, 0.8);
-  background: rgb(255, 191, 73);
-  text-align: center;
-}
-
-#coupon-list .coupon:hover {
-  cursor: pointer;
-  transform: scale3d(1, 1, 1);
-  transition: all 0.4s ease;
-}
-
-#coupon-list .coupon:active {
-  cursor: pointer;
-  transform: scale3d(0.95, 0.95, 0.95);
-  transition: all 0.05s ease;
-}
 @media (pointer: none), (pointer: coarse) {
-  #coupon-list .coupon:hover {
-    cursor: pointer;
-    transform: scale3d(0.95, 0.95, 0.95);
-    transition: all 0.05s ease;
-  }
-}
-#coupon-list .coupon:link {
-  cursor: pointer;
-  transform: scale3d(0.95, 0.95, 0.95);
-  transition: all 0.05s ease;
-}
-
-#coupon-list .coupon.activated {
-  color: red;
-}
-
-#coupon-list .coupon.inactive img {
-  opacity: 1;
-  filter: grayscale(100%) opacity(35%) brightness(25%);
-}
-#coupon-list .coupon.inactive .content {
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-#coupon-list .coupon.inactive .content .vendor,
-#coupon-list .coupon.inactive .content .title,
-#coupon-list .coupon.inactive .content p {
-  color: rgba(0, 0, 0, 0.7);
-  text-shadow: 0px 0px 40px rgb(255, 255, 255);
-}
 
 @keyframes fade-in {
   from {

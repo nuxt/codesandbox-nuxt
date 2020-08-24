@@ -9,6 +9,11 @@ export default {
     title: { type: "string" }, //"Kaufe Eins erhalte Zwei",
     description: { type: "string" }, //"Beim Kauf von 2 Heißgetränken erhälst du das günstigere umsonst",
     image: { type: "string" }, //"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAADtJREFUSA1jtLW1/c9AQ8BEQ7PBRo9aQDCER4NoNIgIhgBBBaOpaDSICIYAQQWjqWg0iAiGAEEFNE9FAG3uAeZT5P+eAAAAAElFTkSuQmCC",
+    popUp: {
+      title: { type: "string" }, // Gutschein aktivieren
+      text: { type: "string" }, // Sichere dir jetzt diesen Gutschein...
+      buttonText: { type: "string" } // Aktivieren
+    },
     submit: {
       type: "object",
       properties: {
