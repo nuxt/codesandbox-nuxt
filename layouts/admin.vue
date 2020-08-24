@@ -320,8 +320,6 @@ p.small {
   background-repeat: no-repeat;
 }
 
-@media (pointer: none), (pointer: coarse) {
-
 @keyframes fade-in {
   from {
     opacity: 0;
