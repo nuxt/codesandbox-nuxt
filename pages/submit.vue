@@ -16,7 +16,7 @@
         <hr class="perforation">
         <div class="activation-code">
           <div class="activation-code-error" v-if="hasError">{{ error }}</div>
-          <nuxt-link to="/qrcode" class="scanner-link">Freischaltcode scannen</nuxt-link>
+          <nuxt-link to="/qrcode" class="scanner-link">QR-Code scannen</nuxt-link>
           <div class="back-button-wrapper">
             <button class="back-button" @click="cancel">Gutschein verwerfen</button>
           </div>
@@ -47,8 +47,8 @@
     <div class="modal" :class="{ show: showModal, hidden: !success }">
       <div class="modal-content-wrapper" v-if="success" @click.stop="yeah">
         <div class="modal-content">
-          <h3>Gutschein Eingelöst</h3>
-          <p>Dein Gutschein für {{ coupon.vendor }} wurde erfolgreich eingelöst.</p>
+          <h3>{{ coupon.successPopUp && coupon.successPopUp.title ? coupon.successPopUp.title : 'Gutschein eingelöst' }}</h3>
+          <p>{{ coupon.successPopUp && coupon.successPopUp.text ? coupon.successPopUp.text : 'Dein Gutschein für ' + coupon.vendor + ' wurde erfolgreich eingelöst.' }}</p>
           <button
             id="modal-primary-button"
             class="button-primary"

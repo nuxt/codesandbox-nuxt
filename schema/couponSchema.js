@@ -11,15 +11,15 @@ export default {
     image: { type: "string" }, //"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAADtJREFUSA1jtLW1/c9AQ8BEQ7PBRo9aQDCER4NoNIgIhgBBBaOpaDSICIYAQQWjqWg0iAiGAEEFNE9FAG3uAeZT5P+eAAAAAElFTkSuQmCC",
     popUp: {
       title: { type: "string" }, // Gutschein aktivieren
-      text: { type: "string" }, // Sichere dir jetzt diesen Gutschein...
-      buttonText: { type: "string" } // Aktivieren
+      text: { type: "string" } // Sichere dir jetzt diesen Gutschein...
+    },
+    successPopUp: {
+      title: { type: "string" }, // Gutschein eingelöst
+      text: { type: "string" } // Dein Gutschein für Beispiel Ort wurde erfolgreich eingelöst.
     },
     submit: {
-      type: "object",
-      properties: {
-        info: { type: "string" }, //"Du kaufst ein Heißgetränk und bekommst zwei. Scanne dazu den Freischaltcode vorort im Geschäft.",
-        code: { type: "string" } //"123"
-      }
+      info: { type: "string" }, //"Du kaufst ein Heißgetränk und bekommst zwei. Scanne dazu den QR-Code vorort im Geschäft.",
+      code: { type: "string" } //"123"
     },
     location: {
       type: "object",
