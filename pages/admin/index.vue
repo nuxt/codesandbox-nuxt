@@ -132,8 +132,11 @@ export default {
         popUp: {
           title: "Gutschein aktivieren",
           text:
-            "Sichere dir jetzt diesen Gutschein und löse ihn vor Ort im Geschäft ein. Nach dem Einlösen kannst du dir einen neuen Gutschein sichern.",
-          buttonText: "Aktivieren"
+            "Sichere dir jetzt diesen Gutschein und löse ihn vor Ort im Geschäft ein. Nach dem Einlösen kannst du dir einen neuen Gutschein sichern."
+        },
+        successPopUp: {
+          title: "Gutschein eingelöst",
+          text: "Dein Gutschein für Beispiel Ort wurde erfolgreich eingelöst."
         },
         submit: {
           info: "Infotext auf Submit-Page kommt hierher",
