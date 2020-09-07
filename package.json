@@ -1,7 +1,7 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "novum",
   "version": "1.0.0",
-  "description": "Nuxt starter for CodeSandBox",
+  "description": "",
   "author": "Nuxt.js Team",
   "private": true,
   "scripts": {
@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@nuxt/http": "^0.5.0",
+    "@nuxtjs/vuetify": "1.11.2",
     "nuxt": "^2.12.2",
-    "reqlim": "^0.0.0"
-  }
+    "nuxt-i18n": "6.13.12",
+    "reqlim": "0.0.0"
+  },
+  "keywords": []
 }
