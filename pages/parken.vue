@@ -61,6 +61,8 @@
       data() {
          return {
             userMarker: undefined,
+            error: "",
+            showError: false,
             options: {
                zoomControl: true,
                mapTypeControl: false,
@@ -180,6 +182,7 @@
          },
 
          gpsButtonClicked() {
+            this.showError = true;
             if (navigator.geolocation) {
                if (this.userMarker) {
                   this.userMarker.setMap(null);
@@ -206,6 +209,8 @@
                      });
                      map.panTo(userPos);
                   });
+               }, (error) => {
+                  this.$toasted.show(error);
                });
             } else {
                if (this.userMarker) {
@@ -254,17 +259,21 @@
       }
 
       .gps-button {
-         background-color: rgba(255, 255, 255, 0.8);
-         border-radius: 10px;
-         border: solid 1px rgba(255, 255, 255, 0.8);
+         background-color: rgba(255, 255, 255, 1);
+         border-radius: 20px;
+         border: solid 1px rgba(255, 255, 255, 1);
          position: absolute;
          top: 40px;
          right: 10px;
          text-align: center;
          z-index: 10;
-         height: 30px;
-         width: 30px;
+         height: 40px;
+         width: 40px;
          box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.5);
+
+         img {
+            vertical-align: middle;
+         }
       }
    }
 </style>

@@ -46,7 +46,7 @@ export default {
    ** Plugins to load before mounting the App
    ** Doc: https://nuxtjs.org/guide/plugins
    */
-  plugins: ["@/plugins/vue2-gmap.js"],
+  plugins: ["@/plugins/vue2-gmap.js", "@/plugins/vue-toasted.js"],
 
   /*
    ** Nuxt.js modules
