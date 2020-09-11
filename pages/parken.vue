@@ -61,6 +61,8 @@
       data() {
          return {
             userMarker: undefined,
+            error: "",
+            showError: false,
             options: {
                zoomControl: true,
                mapTypeControl: false,
@@ -180,6 +182,7 @@
          },
 
          gpsButtonClicked() {
+            this.showError = true;
             if (navigator.geolocation) {
                if (this.userMarker) {
                   this.userMarker.setMap(null);
@@ -206,6 +209,8 @@
                      });
                      map.panTo(userPos);
                   });
+               }, (error) => {
+                  this.$toasted.show(error);
                });
             } else {
                if (this.userMarker) {
@@ -265,6 +270,10 @@
          height: 40px;
          width: 40px;
          box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.5);
+
+         img {
+            vertical-align: middle;
+         }
       }
    }
 </style>
