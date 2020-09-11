@@ -210,7 +210,12 @@
                      map.panTo(userPos);
                   });
                }, (error) => {
-                  this.$toasted.show(error);
+                  switch(error.code) {
+                     case 1:
+                        return this.$toasted.show("Bitte gib uns die Erlaubnis auf deine GPS-Daten zuzugreifen.");
+                     default:
+                        return this.$toasted.show(`Ein unerwarteter Fehler ist aufgetreten. (Fehlercode: ${error.code})`);
+                  }
                });
             } else {
                if (this.userMarker) {
