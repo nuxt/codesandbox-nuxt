@@ -503,7 +503,7 @@ button:focus {
   font-size: 17px;
   font-weight: 500;
   letter-spacing: 0.03em;
-  padding: 14px 16px;
+  padding: 14px 40px;
   color: rgb(255, 255, 255);
   background-color: #00495A;
   border-radius: 100px;
