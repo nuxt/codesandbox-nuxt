@@ -132,25 +132,6 @@ body {
   width: 90%;
 }
 
-h1 {
-  margin: 2rem 20px 1rem 20px;
-  font-size: 34px;
-  font-weight: 700;
-  line-height: 41px;
-}
-
-h2 {
-  margin: 1rem 20px 1rem 20px;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 20px;
-}
-h3 {
-  margin: 1rem 20px 1rem 20px;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 10px;
-}
 p {
   margin: 0rem 20px 1rem 20px;
 }
