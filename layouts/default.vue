@@ -499,11 +499,12 @@ button:focus {
 
 .modal .modal-content-wrapper .button-primary {
   display: block;
+  position: relative;
   text-align: center;
   font-size: 17px;
   font-weight: 500;
   letter-spacing: 0.03em;
-  padding: 14px 40px;
+  padding: 14px 45px;
   color: rgb(255, 255, 255);
   background-color: #00495A;
   border-radius: 100px;
@@ -559,15 +560,16 @@ button:focus {
 .button-primary.loading:after {
   content: "";
   display: block;
+  position: absolute;
+  top: 14px;
+  right: 14px;
   animation: rotate 0.7s linear infinite;
-  width: 16px;
-  height: 16px;
+  width: 19px;
+  height: 19px;
   background-color: transparent;
   border-radius: 50%;
   border: solid 2px white;
   border-bottom-color: transparent;
-  float: right;
-  margin: 2px 8px 0 -24px;
 }
 
 @keyframes shake {
