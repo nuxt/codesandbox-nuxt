@@ -1,33 +1,36 @@
-<template>
+<template >
   <section>
     <div>
-      <Logo :width="350"/>
-      <h1 class="title">NUXT<span class="green">JS</span></h1>
-      <h2 class="subtitle">Starter for CodeSandBox</h2>
+      <div>
+        <h2 class="titles">BiZUp</h2>
+        <h4 class="subtitle">A one stop solution to all your business needs</h4>
+      </div>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation <IconLink/></a>
-        <NLink to="/about" class="button--grey">About</NLink>
+        <u class="txt">New user?</u>
+        <NLink to="/register" class="button--green">Register</NLink>&emsp;
+        <u class="txt">Already a user?</u>
+        <NLink to="/feeds" class="button--grey">Login</NLink>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import IconLink from '~/components/IconLink.vue'
+import Logo from "~/components/Logo.vue";
+import IconLink from "~/components/IconLink.vue";
 
 export default {
   components: {
     Logo,
     IconLink
   }
-}
+};
 </script>
 
 <style scoped>
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 400;
   font-size: 100px;
@@ -49,5 +52,38 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+* {
+  font-family: Roboto;
+}
+.titles {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 120px;
+  line-height: 160px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  backdrop-filter: blur(4px);
+}
+.subtitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+.txt {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: justify;
+  text-decoration-line: underline;
+
+  color: #FFFFFF;
 }
 </style>
