@@ -78,10 +78,12 @@ export default {
       activeCouponId = cookie.get("active_coupon_id");
       activeCouponExpiry = cookie.get("active_coupon_expiry");
     }
+    console.log("COUPON:", activeCouponId);
     const {
-      data: { coupons }
-    } = await axios.get(`${process.env.SANDBOX_URL}api/coupons`);
-    const coupon = coupons.find(c => c.id === activeCouponId);
+      data: { coupon }
+    } = await axios.get(
+      `${process.env.SANDBOX_URL}api/coupon?id=${activeCouponId}`
+    );
     return { coupon, activeCouponExpiry };
   },
   data() {
