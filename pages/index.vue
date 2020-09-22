@@ -217,8 +217,8 @@ export default {
     activateCoupon(coupon) {
       this.activatingCoupon = true;
       Cookie.set("active_coupon_id", coupon.id, { expires: 3 /* days */ });
-      Cookie.set("active_coupon_expiry", Date.now() + 1000 * 60 * 60 * 24, {
-        expires: 1 /* days */
+      Cookie.set("active_coupon_expiry", Date.now() + 1000 * 60 * 60 * 24 * 3, {
+        expires: 3 /* days */
       });
       this.$ga.event("coupon", "activate", coupon.id, 1);
       this.$router.push("/submit");
