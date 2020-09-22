@@ -78,7 +78,6 @@ export default {
       activeCouponId = cookie.get("active_coupon_id");
       activeCouponExpiry = cookie.get("active_coupon_expiry");
     }
-    console.log("COUPON:", activeCouponId);
     const {
       data: { coupon }
     } = await axios.get(
