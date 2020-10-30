@@ -1,17 +1,20 @@
 import admin from "firebase-admin";
+
 const serviceAccount = JSON.parse(process.env.FIREBASE);
 
 let db;
 let prefix = process.env.NODE_ENV === "development" ? "test-" : "";
 
-function _init() {
-  if (db) return;
+console.log("[filesystem] Is development: ", process.env.NODE_ENV === "development");
 
-  if (admin.apps.length === 0) {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount)
-    });
-  }
+function _init() {
+   if (db) return;
+
+   if (admin.apps.length === 0) {
+      admin.initializeApp({
+         credential: admin.credential.cert(serviceAccount)
+      });
+   }
 
   db = admin.firestore();
 }

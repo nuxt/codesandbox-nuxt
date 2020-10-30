@@ -1,22 +1,19 @@
 # heylocal
 
-> heylocal.de
+> Production version is live here: www.heylocal.de
+
+## Pre Configuration
+
+* Have NodeJS version 10.23.0 or later.
+* Have Yarn installed.
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
-$ yarn install
+$ npm install
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
-
-# build for production and launch server
-$ yarn run build
-$ yarn start
-
-# generate static project
-$ yarn run generate
+# get the environment variables from heroku and set those in 
+# IntelliJ or run directly in terminal with all env vars...
+$ NODE_ENV=development SANDBOX_URL=http://localhost:3000/ ... npm run dev
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
