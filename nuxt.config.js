@@ -4,11 +4,6 @@ const cors = require("cors");
 const redirectSSL = require("redirect-ssl");
 
 export default {
-  /*
-   ** Rendering mode
-   ** Doc: https://nuxtjs.org/api/configuration-mode
-   */
-  mode: "universal",
 
   env: process.env,
 
@@ -47,25 +42,9 @@ export default {
    ** Doc: https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    { src: "@/plugins/vue2-gmap.js" },
+    { src: "@/plugins/vue2-gmap.js", mode: "client" },
     { src: "@/plugins/vue-toasted.js", mode: "client" }
   ],
-
-  /*
-   ** Nuxt.js modules
-   ** Doc: https://nuxtjs.org/guide/modules
-   */
-  modules: [
-    // Doc: https://http.nuxtjs.org
-    "@nuxt/http"
-  ],
-
-  /*
-   ** HTTP module configuration
-   */
-  http: {
-    // See https://http.nuxtjs.org/api/#options
-  },
 
   /*
    ** Build configuration
