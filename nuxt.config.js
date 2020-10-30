@@ -42,7 +42,7 @@ export default {
    ** Doc: https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    { src: "@/plugins/vue2-gmap.js", mode: "client" },
+    { src: "@/plugins/vue2-gmap.js" },
     { src: "@/plugins/vue-toasted.js", mode: "client" }
   ],
 
