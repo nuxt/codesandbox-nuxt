@@ -69,7 +69,7 @@
             </a>
           </div>
           <div class="navi">
-            <a href="#">Feedback</a>
+            <a href="mailto:contact@heylocal.de">Feedback</a>
             <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>
             <a target="_blank" href="/legal?id=Heylocal-Nutzungsbedingungen">Nutzungsbedingungen</a>
           </div>
