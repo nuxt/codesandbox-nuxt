@@ -169,13 +169,13 @@ idden {
 
 .spinner {
   animation: rotate 1s linear infinite;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   background-color: transparent;
   border-radius: 50%;
   border: solid 4px black;
   border-bottom-color: transparent;
-  margin: 20vh auto;
+  margin: 150px auto;
 }
 
 @keyframes shake {
