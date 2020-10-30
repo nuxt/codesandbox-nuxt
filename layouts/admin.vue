@@ -26,7 +26,9 @@ export default {
     Footer,
     CookieLaw: async () => {
       /* eslint-disable */
-      if (process.client) return (await import("vue-cookie-law")).default;
+      if (process.client)
+         return (await import("vue-cookie-law")).default;
+      return {};
     }
   },
   created() {

@@ -3,9 +3,9 @@ import admin from "firebase-admin";
 const serviceAccount = JSON.parse(process.env.FIREBASE);
 
 let db;
-let prefix = process.env.NODE_ENV === "development" ? "test-" : "";
+let prefix = process.env.NODE_ENV !== "production" ? "test-" : "";
 
-console.log("[filesystem] Is development: ", process.env.NODE_ENV === "development");
+console.log("[filesystem] Is development: ", process.env.NODE_ENV !== "production");
 
 function _init() {
    if (db) return;
