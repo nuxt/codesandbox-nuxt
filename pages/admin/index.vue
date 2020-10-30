@@ -98,6 +98,7 @@ export default {
       /* eslint-disable */
       if (process.client)
         return (await import("vue-js-toggle-button")).ToggleButton;
+      return {};
     }
   },
   async asyncData({ params, req }) {

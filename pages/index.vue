@@ -25,22 +25,27 @@
           wieder vorbei.
         </div>
         <div id="coupon-list">
-          <div v-if="loading" class="spinner"></div>
           <transition-group name="fade">
             <div
-              v-for="coupon in coupons"
-              :key="coupon.id"
-              class="coupon"
-              :class="{ inactive: !coupon.active, loaded: coupon.loaded }"
-              @click="openCouponModal(coupon)"
+               v-for="coupon in coupons"
+               :key="coupon.id"
+               class="coupon"
+               :class="{ inactive: !coupon.active, loaded: coupon.loaded }"
+               @click="openCouponModal(coupon)"
             >
-              <img :src="coupon.image" @load="couponImageLoaded(coupon)">
-              <div class="content" v-if="coupon.loaded">
-                <div class="vendor">{{coupon.vendor}}</div>
-                <h3 class="title">{{coupon.title}}</h3>
-                <p>{{coupon.description}}</p>
-                <div class="badge-empty-v1" v-if="!coupon.active">Bald wieder verfügbar!</div>
-              </div>
+               <!-- COUPON IMAGE AND LOADING SPINNER -->
+               <img v-if="coupon.image"
+                    :src="coupon.image"
+                    @load="couponImageLoaded(coupon)"
+                    :alt="coupon.title">
+               <div v-else class="spinner"></div>
+
+               <div class="content">
+                  <div class="vendor">{{coupon.vendor}}</div>
+                  <h3 class="title">{{coupon.title}}</h3>
+                  <p>{{coupon.description}}</p>
+                  <div class="badge-empty-v1" v-if="!coupon.active">Bald wieder verfügbar!</div>
+               </div>
             </div>
           </transition-group>
         </div>
@@ -115,116 +120,116 @@
 </template>
 
 <script>
-import axios from "axios";
-import Cookie from "js-cookie";
-import cookieparser from "cookieparser";
-import { version } from "../package.json";
+   import axios from "axios";
+   import Cookie from "js-cookie";
+   import cookieparser from "cookieparser";
+   import {version} from "../package.json";
 
-export default {
-  middleware: "hasNoActiveCoupon",
-  data() {
-    return {
-      selectedCoupon: undefined,
-      showModal: false,
-      error: undefined,
-      activatingCoupon: false,
-      version: version
-    };
-  },
-  async asyncData({ params, req }) {
-    try {
-      let submittedCouponId;
-      if (process.server && req.headers.cookie) {
-        submittedCouponId = cookieparser.parse(req.headers.cookie)
-          .submitted_coupon_id;
-      } else if (process.client) {
-        submittedCouponId = Cookie.get("submitted_coupon_id");
+   export default {
+      middleware: "hasNoActiveCoupon",
+      data() {
+         return {
+            selectedCoupon: undefined,
+            showModal: false,
+            error: undefined,
+            activatingCoupon: false,
+            version: version
+         };
+      },
+      async asyncData({params, req}) {
+         try {
+            let submittedCouponId;
+            if (process.server && req.headers.cookie) {
+               submittedCouponId = cookieparser.parse(req.headers.cookie)
+                  .submitted_coupon_id;
+            } else if (process.client) {
+               submittedCouponId = Cookie.get("submitted_coupon_id");
+            }
+            const {
+               data: {coupons}
+            } = await axios.get(`${process.env.SANDBOX_URL}api/coupons`);
+            if (submittedCouponId !== undefined) {
+               const index = coupons.findIndex(c => c.id === submittedCouponId);
+               if (index !== -1) {
+                  coupons[index].active = false;
+                  console.log("Coupon schon eingelöst: ", submittedCouponId);
+               }
+            }
+            return {
+               coupons: coupons.map(c => {
+                  c.loaded = false;
+                  return c;
+               })
+            };
+         } catch (e) {
+            console.log("Error: ", e);
+            return {error: e.message, coupons: []};
+         }
+      },
+      watch: {
+         selectedCoupon(val) {
+            setTimeout(() => {
+               if (val) {
+                  this.showModal = true;
+               } else {
+                  this.showModal = false;
+               }
+            }, 10);
+         }
+      },
+      created() {
+         this.setUserId();
+         if (process.client) {
+            this.loadCouponImages();
+         }
+      },
+      methods: {
+         async loadCouponImages() {
+            const {
+               data: {coupons: images}
+            } = await axios.get(`${process.env.SANDBOX_URL}api/coupon-images`);
+            images.forEach(({image, id: couponId}) => {
+               const index = this.coupons.findIndex(coupon => coupon.id === couponId);
+               this.$set(this.coupons[index], "image", image);
+            });
+         },
+         couponImageLoaded(coupon) {
+            const i = this.coupons.findIndex(c => c.id === coupon.id);
+            this.coupons[i].loaded = true;
+         },
+         setUserId() {
+            // eslint-disable-next-line
+            if (process.client) {
+               let userId = Cookie.get("user_id");
+               if (!userId) {
+                  userId = Math.random()
+                     .toString(36)
+                     .substr(2, 10);
+                  Cookie.set("user_id", userId);
+                  this.$ga.event("user", "new", userId, 1);
+               } else {
+                  this.$ga.event("user", "come_back", userId, 1);
+               }
+               console.log(`User id: '${userId}'`);
+            }
+         },
+         openCouponModal(coupon) {
+            if (coupon.active) {
+               this.$ga.event("coupon", "click", coupon.id, 1);
+            }
+            this.selectedCoupon = coupon;
+         },
+         activateCoupon(coupon) {
+            this.activatingCoupon = true;
+            Cookie.set("active_coupon_id", coupon.id, {expires: 3 /* days */});
+            Cookie.set("active_coupon_expiry", Date.now() + 1000 * 60 * 60 * 24 * 3, {
+               expires: 3 /* days */
+            });
+            this.$ga.event("coupon", "activate", coupon.id, 1);
+            this.$router.push("/submit");
+         }
       }
-      const {
-        data: { coupons }
-      } = await axios.get(`${process.env.SANDBOX_URL}api/coupons`);
-      if (submittedCouponId !== undefined) {
-        const index = coupons.findIndex(c => c.id === submittedCouponId);
-        if (index !== -1) {
-          coupons[index].active = false;
-          console.log("Coupon schon eingelöst: ", submittedCouponId);
-        }
-      }
-      return {
-        coupons: coupons.map(c => {
-          c.loaded = false;
-          return c;
-        })
-      };
-    } catch (e) {
-      console.log("Error: ", e);
-      return { error: e.message, coupons: [] };
-    }
-  },
-  watch: {
-    selectedCoupon(val) {
-      setTimeout(() => {
-        if (val) {
-          this.showModal = true;
-        } else {
-          this.showModal = false;
-        }
-      }, 10);
-    }
-  },
-  computed: {
-    loading() {
-      return this.coupons.some(c => !c.loaded);
-    }
-  },
-  created() {
-    this.setUserId();
-  },
-  mounted() {
-    setTimeout(() => {
-      this.coupons.forEach(c => {
-        c.loaded = true;
-      });
-    }, 1000);
-  },
-  methods: {
-    couponImageLoaded(coupon) {
-      const i = this.coupons.findIndex(c => c.id === coupon.id);
-      this.coupons[i].loaded = true;
-    },
-    setUserId() {
-      // eslint-disable-next-line
-      if (process.client) {
-        let userId = Cookie.get("user_id");
-        if (!userId) {
-          userId = Math.random()
-            .toString(36)
-            .substr(2, 10);
-          Cookie.set("user_id", userId);
-          this.$ga.event("user", "new", userId, 1);
-        } else {
-          this.$ga.event("user", "come_back", userId, 1);
-        }
-        console.log(`User id: '${userId}'`);
-      }
-    },
-    openCouponModal(coupon) {
-      if (coupon.active) {
-        this.$ga.event("coupon", "click", coupon.id, 1);
-      }
-      this.selectedCoupon = coupon;
-    },
-    activateCoupon(coupon) {
-      this.activatingCoupon = true;
-      Cookie.set("active_coupon_id", coupon.id, { expires: 3 /* days */ });
-      Cookie.set("active_coupon_expiry", Date.now() + 1000 * 60 * 60 * 24 * 3, {
-        expires: 3 /* days */
-      });
-      this.$ga.event("coupon", "activate", coupon.id, 1);
-      this.$router.push("/submit");
-    }
-  }
-};
+   };
 </script>
 
 <style scoped>
@@ -255,14 +260,14 @@ export default {
   animation-timing-function: ease-in-out;
 }
 
-.coupon {
-  transform: scale(0.9);
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+.coupon img {
+   transform: scale(0.9);
+   opacity: 0;
+   transition: opacity 0.3s ease-out 0.3s, transform 0.5s ease-in;
 }
 
-.coupon.loaded {
-  transform: scale(1);
-  opacity: 1;
+.coupon.loaded img {
+   transform: scale(1);
+   opacity: 1;
 }
 </style>

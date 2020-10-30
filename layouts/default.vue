@@ -556,7 +556,7 @@ button:focus {
   border-radius: 50%;
   border: solid 4px black;
   border-bottom-color: transparent;
-  margin: 20vh auto;
+  margin: 100px auto;
 }
 
 .button-primary.loading:after {
