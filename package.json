@@ -1,7 +1,7 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "nuxt-template",
   "version": "1.0.0",
-  "description": "Nuxt starter for CodeSandBox",
+  "description": "",
   "author": "Nuxt.js Team",
   "private": true,
   "scripts": {
@@ -12,8 +12,9 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@nuxt/http": "^0.5.0",
-    "nuxt": "^2.12.2",
+    "@nuxt/http": "0.6.0",
+    "nuxt": "2.14.7",
     "reqlim": "^0.0.0"
-  }
+  },
+  "keywords": []
 }
