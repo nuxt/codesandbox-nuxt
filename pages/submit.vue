@@ -37,7 +37,7 @@
       </div>
       <div class="footer">
         <div class="navi">
-          <a href="#">Feedback</a>
+          <a href="mailto:contact@heylocal.de">Feedback</a>
           <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>
         </div>
       </div>
