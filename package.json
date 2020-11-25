@@ -12,8 +12,11 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@nuxt/http": "^0.3.0",
-    "nuxt": "^2.5.1",
-    "reqlim": "^0.0.0"
+    "@carbon/icons-vue": "10.21.0",
+    "@carbon/vue": "2.35.0",
+    "@nuxt/http": "0.6.0",
+    "carbon-components": "10.24.0",
+    "nuxt": "2.14.7",
+    "reqlim": "0.0.0"
   }
 }

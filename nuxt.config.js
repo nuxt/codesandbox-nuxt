@@ -1,11 +1,5 @@
 export default {
   /*
-  ** Rendering mode
-  ** Doc: https://nuxtjs.org/api/configuration-mode
-  */
-  mode: 'universal',
-
-  /*
   ** Headers of the page
   ** Doc: https://vue-meta.nuxtjs.org/api/#metainfo-properties
   */
@@ -60,3 +54,14 @@ export default {
     extend(config, ctx) {}
   }
 };
+
+  /*
+   ** Build configuration
+   ** Doc: https://nuxtjs.org/api/configuration-build
+   */
+  build: {
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}
+  }
