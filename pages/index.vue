@@ -1,53 +1,46 @@
 <template>
   <section>
     <div>
-      <Logo :width="350"/>
-      <h1 class="title">NUXT<span class="green">JS</span></h1>
-      <h2 class="subtitle">Starter for CodeSandBox</h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation <IconLink/></a>
-        <NLink to="/about" class="button--grey">About</NLink>
-      </div>
+      <v-layout>
+        <v-flex
+          v-for="(gorsel, gorselIndex) in gorseller"
+          :key="gorselIndex"
+          class="ma-2"
+          style="margin-right: 10px"
+          @click="index = gorselIndex"
+        >
+          <img width="180" height="180" :src="gorsel.url" class="resimKutusu" />
+        </v-flex>
+        <LightGallery
+          :images="gorseller"
+          :index="index"
+          :disable-scroll="false"
+          @close="index = null"
+        />
+      </v-layout>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import IconLink from '~/components/IconLink.vue'
-
 export default {
-  components: {
-    Logo,
-    IconLink
-  }
-}
+  data: () => ({
+    gorseller: [
+      { title: "img 1", url: "https://picsum.photos/500/300?image=1" },
+      { title: "img 2", url: "https://picsum.photos/500/300?image=2" },
+    ],
+    index: null,
+  }),
+  components: {},
+};
 </script>
 
 <style scoped>
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 400;
-  font-size: 100px;
-  color: #2E495E;
-  letter-spacing: 1px;
-  font-size: 6em;
-}
-.green {
-  color: #00C48D;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 3em;
-  color: #2E495E;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.resimKutusu {
+  border: 1px solid #cdcdcd;
+  padding: 5px;
+  background: #eeeeee;
+  border-radius: 5px;
+  cursor: pointer;
 }
 </style>

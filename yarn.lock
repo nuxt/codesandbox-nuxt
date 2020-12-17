@@ -7413,6 +7413,11 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
   integrity sha512-KmvZVtmM26BQOMK1rwUZsrqxEGeKiYSZGA7SNWE6uExx8UX/cj9hq2MRV/wWC3Cq6AoeDGk57rL9YMFRel/q+g==
 
+vue-light-gallery@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue-light-gallery/-/vue-light-gallery-1.0.1.tgz#9416121b6940d0874b0ee6d9a48cfb7a7903d9a9"
+  integrity sha512-xNKNZ3upRIHgIeFIOQ+3RZcHsr3CwZvSFq3SqcsZ2rBWlHqc9IsVpWlpD2EOJyy7ovgODTC8C2rfaiRchQ2GOA==
+
 vue-loader@^15.9.1:
   version "15.9.1"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.1.tgz#bd2ab8f3d281e51d7b81d15390a58424d142243e"
