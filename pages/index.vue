@@ -1,33 +1,26 @@
 <template>
-  <section>
-    <div>
-      <Logo :width="350"/>
-      <h1 class="title">NUXT<span class="green">JS</span></h1>
-      <h2 class="subtitle">Starter for CodeSandBox</h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation <IconLink/></a>
-        <NLink to="/about" class="button--grey">About</NLink>
-      </div>
-    </div>
+  <section class="text-center">
+    <Header />
+    <Footer />
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import IconLink from '~/components/IconLink.vue'
+import Header from "~/components/Header.vue";
+import Footer from "~/components/Footer.vue";
 
 export default {
   components: {
-    Logo,
-    IconLink
-  }
-}
+    Header,
+    Footer,
+  },
+};
 </script>
 
 <style scoped>
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 400;
   font-size: 100px;

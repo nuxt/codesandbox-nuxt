@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark">
     <a class="navbar-brand" href="#"><Logo /></a>
     <button
       class="navbar-toggler"
