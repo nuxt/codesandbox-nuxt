@@ -1,33 +1,22 @@
 <template>
   <section>
-    <div>
-      <Logo :width="350"/>
-      <h1 class="title">NUXT<span class="green">JS</span></h1>
-      <h2 class="subtitle">Starter for CodeSandBox</h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation <IconLink/></a>
-        <NLink to="/about" class="button--grey">About</NLink>
-      </div>
-    </div>
+    <h1>Page 1</h1>
+    <p>If you go to about page and come back the ad disappears</p>
+    <p>
+      An error is raised:
+      <i>adsbygoogle.push() error: All ins elements in the...</i>
+    </p>
+    <br />
+    <adsbygoogle />
+    <br />
+    <NuxtLink to="/about"> Go to about</NuxtLink>
   </section>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
-import IconLink from '~/components/IconLink.vue'
-
-export default {
-  components: {
-    Logo,
-    IconLink
-  }
-}
-</script>
-
 <style scoped>
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 400;
   font-size: 100px;

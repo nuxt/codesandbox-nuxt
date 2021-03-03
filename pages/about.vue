@@ -1,37 +1,42 @@
 <template>
-  <div class="container">
-    <div>
-      <h1>Hello from <span class="name">{{ name }}</span>.</h1>
-      <p><NLink to="/" class="button--grey">Back home</NLink></p>
-    </div>
-  </div>
+  <section>
+    <h1>Page 2</h1>
+    <p>If you go back to homepage the ad disappears if you come back</p>
+    <p>
+      An error is raised:
+      <i>adsbygoogle.push() error: All ins elements in the...</i>
+    </p>
+    <br />
+    <adsbygoogle />
+    <br />
+    <NuxtLink to="/"> Go back to homepage</NuxtLink>
+  </section>
 </template>
 
-<script>
-export default {
-  asyncData() {
-    return {
-      name: (process.server ? 'server' : 'client')
-    }
-  }
-}
-</script>
-
 <style scoped>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-h1 {
+.title {
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: block;
   font-weight: 400;
+  font-size: 100px;
+  color: #2E495E;
+  letter-spacing: 1px;
+  font-size: 6em;
 }
-.name {
+.green {
   color: #00C48D;
 }
-p {
-  margin-top: 20px;
+
+.subtitle {
+  font-weight: 300;
+  font-size: 3em;
+  color: #2E495E;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+
+.links {
+  padding-top: 15px;
 }
 </style>

@@ -21,7 +21,14 @@ export default {
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
    */
-  modules: [],
+  modules: [
+    [
+      "@nuxtjs/google-adsense",
+      {
+        test: true
+      }
+    ]
+  ],
 
   /*
    ** Global CSS

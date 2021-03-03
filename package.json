@@ -12,6 +12,7 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "nuxt": "^2.15.0"
+    "@nuxtjs/google-adsense": "1.3.0",
+    "nuxt": "2.15.2"
   }
 }
