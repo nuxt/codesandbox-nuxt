@@ -191,6 +191,7 @@ h1 {
 
 .word-definitions {
   font-family: "Newsreader", serif;
+  text-align: left;
 }
 
 p {
