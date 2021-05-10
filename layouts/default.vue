@@ -1,13 +1,17 @@
 <template>
   <div class="container">
-    <Nuxt/>
+    <Nuxt />
   </div>
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons");
+
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Lato", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -28,8 +32,7 @@ html {
 .container {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   text-align: center;
 }
 
