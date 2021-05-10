@@ -1,0 +1,36 @@
+[
+  {
+    "word": "loquacious",
+    "phonetics": [
+      {
+        "text": "/loʊˈkweɪʃəs/",
+        "audio": "https://lex-audio.useremarkable.com/mp3/loquacious_us_2.mp3"
+      }
+    ],
+    "meanings": [
+      {
+        "partOfSpeech": "adjective",
+        "definitions": [
+          {
+            "definition": "Tending to talk a great deal; talkative.",
+            "synonyms": [
+              "talkative",
+              "garrulous",
+              "voluble",
+              "over-talkative",
+              "long-winded",
+              "wordy",
+              "verbose",
+              "profuse",
+              "prolix",
+              "effusive",
+              "gushing",
+              "rambling"
+            ],
+            "example": "never loquacious, Sarah was now totally lost for words"
+          }
+        ]
+      }
+    ]
+  }
+]

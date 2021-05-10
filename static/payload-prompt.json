@@ -1,0 +1,92 @@
+[
+  {
+    "word": "prompt",
+    "phonetics": [
+      {
+        "text": "/prɑm(p)t/",
+        "audio": "https://lex-audio.useremarkable.com/mp3/prompt_us_1.mp3"
+      }
+    ],
+    "meanings": [
+      {
+        "partOfSpeech": "transitive verb",
+        "definitions": [
+          {
+            "definition": "(of an event or fact) cause or bring about (an action or feeling)",
+            "synonyms": [
+              "give rise to",
+              "bring about",
+              "cause",
+              "occasion",
+              "result in",
+              "lead to",
+              "elicit",
+              "produce",
+              "bring on",
+              "engender",
+              "induce",
+              "call forth",
+              "evoke",
+              "precipitate",
+              "trigger",
+              "spark off",
+              "provoke",
+              "instigate"
+            ],
+            "example": "his death has prompted an industry-wide investigation of safety violations"
+          },
+          {
+            "definition": "Assist or encourage (a hesitating speaker) to say something.",
+            "synonyms": [
+              "remind",
+              "cue",
+              "give someone a cue",
+              "help out",
+              "coach",
+              "feed"
+            ],
+            "example": "“And the picture?” he prompted"
+          }
+        ]
+      },
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          {
+            "definition": "An act of assisting or encouraging a hesitating speaker.",
+            "example": "with barely a prompt, Barbara talked on"
+          },
+          {
+            "definition": "The time limit for the payment of an account, as stated on a prompt note."
+          }
+        ]
+      },
+      {
+        "partOfSpeech": "adjective",
+        "definitions": [
+          {
+            "definition": "Done without delay; immediate.",
+            "synonyms": [
+              "quick",
+              "swift",
+              "rapid",
+              "speedy",
+              "fast",
+              "direct",
+              "immediate",
+              "instant",
+              "instantaneous",
+              "expeditious",
+              "early",
+              "punctual",
+              "in good time",
+              "on time",
+              "timely"
+            ],
+            "example": "the owner would have died but for the prompt action of two paramedics"
+          }
+        ]
+      }
+    ]
+  }
+]
