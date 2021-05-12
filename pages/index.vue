@@ -1,5 +1,10 @@
 <template>
-  
+  <div>
+    <NuxtLink
+      :to="{ name: 'productos' }"
+      v-text="'Productos'"
+    />
+  </div>
 </template>
 
 <script>

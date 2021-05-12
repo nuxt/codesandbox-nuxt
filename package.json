@@ -12,6 +12,7 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.1",
     "nuxt": "^2.15.0"
   }
 }

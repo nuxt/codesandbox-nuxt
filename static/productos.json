@@ -1,0 +1,19 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "slug": "auriculares",
+      "desc": "Auriculares verdes, rojos y amarillos."
+    },
+    {
+      "id": 2,
+      "slug": "micrófonos",
+      "desc": "Micrófonos verdes, rojos y amarillos."
+    },
+    {
+      "id": 3,
+      "slug": "teléfonos-inalámbricos",
+      "desc": "Teléfonos inalámbricos verdes, rojos y amarillos."
+    }
+  ]
+}
