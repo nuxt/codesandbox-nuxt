@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Producto {{ producto.slug }}</h1>
+    <h1>Producto {{ producto.nombre }}</h1>
+    <p v-text="producto.desc"></p>
   </div>
 </template>
 
@@ -8,9 +9,9 @@
 export default {
   name: 'ProductoMostrar',
   async asyncData({ params, $axios }) {
-    const respuesta = await $axios.$get(`productos/${params.slug}`)
+    const respuesta = await $axios.$get(`productos/${params.slug}.json`)
 
-    return { producto: respuesta.data }
+    return { producto: respuesta }
   },
   data() {
     return {

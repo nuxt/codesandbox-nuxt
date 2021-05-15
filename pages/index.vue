@@ -8,14 +8,8 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import IconLink from '~/components/IconLink.vue'
-
 export default {
-  components: {
-    Logo,
-    IconLink
-  }
+  name: 'Portada',
 }
 </script>
 
@@ -25,7 +19,6 @@ export default {
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 400;
-  font-size: 100px;
   color: #2E495E;
   letter-spacing: 1px;
   font-size: 6em;

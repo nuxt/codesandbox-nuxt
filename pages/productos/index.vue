@@ -19,27 +19,13 @@
 export default {
   name: 'ProductoIndice',
   async asyncData({ $axios }) {
-    const respuesta = await $axios.$get('https://issjv.sse.codesandbox.io/productos.json')
+    const respuesta = await $axios.$get('productos.json')
 
-    return { productos: respuesta.data }
+    return { productos: respuesta.productos }
   },
   data() {
     return {
       productos: [],
-      productos2: [
-        {
-          id: 1,
-          slug: 'ventiladores',
-        },
-        {
-          id: 2,
-          slug: 'micrófonos',
-        },
-        {
-          id: 3,
-          slug: 'teléfonos-inalámbricos',
-        },
-      ]
     }
   },
 }

@@ -20,3 +20,13 @@ $ yarn run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+
+https://codesandbox.io/s/github/jgrandar/codesandbox-nuxt
+https://github.com/jgrandar/codesandbox-nuxt
+
+Issue:
+Generate dynamic routes with accent marks impossible to get it working
+
+- nuxt: v2.15.5
+- node: v14.16.1
