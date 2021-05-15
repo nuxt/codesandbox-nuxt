@@ -9,7 +9,7 @@
 export default {
   name: 'ProductoMostrar',
   async asyncData({ params, $axios }) {
-    const respuesta = await $axios.$get(`productos/${params.slug}.json`)
+    const respuesta = await $axios.$get(`https://2h2md.sse.codesandbox.io/productos/${params.slug}.json`)
 
     return { producto: respuesta }
   },

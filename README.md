@@ -21,7 +21,7 @@ $ yarn run generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
-
+https://github.com/codesandbox/codesandbox-client/issues/457
 https://codesandbox.io/s/github/jgrandar/codesandbox-nuxt
 https://github.com/jgrandar/codesandbox-nuxt
 
