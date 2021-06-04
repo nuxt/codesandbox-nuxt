@@ -17,6 +17,9 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
   /*
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
