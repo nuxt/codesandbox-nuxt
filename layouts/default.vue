@@ -26,6 +26,7 @@
         max-height="600"
       >
         <v-container style="height: 600px">
+          <!-- pages는 여기에 출력된다 -->
           <Nuxt />
         </v-container>
       </v-sheet>
