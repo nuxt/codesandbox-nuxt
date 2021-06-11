@@ -23,9 +23,9 @@
       <v-sheet
         id="scrolling-techniques-7"
         class="overflow-y-auto"
-        max-height="600"
+        min-height="600"
       >
-        <v-container style="height: 600px">
+        <v-container style="min-height: 600px">
           <!-- pages는 여기에 출력된다 -->
           <Nuxt />
         </v-container>
