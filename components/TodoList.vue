@@ -2,7 +2,11 @@
   <v-container>
     <v-row>
       <v-col>
-        <todo-item-form :isActive="isInputFormActive" />
+        <todo-item-form
+          :isActive="isInputFormActive"
+          @switch-input-form="openTodoInputForm"
+          @add-item="addTodoItem"
+        />
       </v-col>
     </v-row>
     <v-row>
@@ -32,6 +36,7 @@
           color="indigo"
           @click="openTodoInputForm"
           style="float: right"
+          v-if="items.length < 5"
         >
           <v-icon dark> mdi-plus </v-icon>
         </v-btn>
@@ -80,17 +85,21 @@ export default {
     openTodoInputForm() {
       this.isInputFormActive = !this.isInputFormActive;
     },
-    addTodoItem() {
+    addTodoItem(item) {
       //const originalItems = localStorage.getItem("items");
       //const items = JSON.parse(originalItems) || [];
       this.itemSeq += 1;
 
-      this.items.push({
+      item["id"] = this.itemSeq;
+      /*
+      {
         id: this.itemSeq,
         action: "15 min",
         subtitle: "밥먹고 배불러서 누워 있을 것",
         title: "밥먹기",
-      });
+      }
+      */
+      this.items.push(item);
 
       localStorage.setItem("items", JSON.stringify(this.items));
     },

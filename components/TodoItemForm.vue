@@ -24,7 +24,7 @@
 
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="success" depressed> 등록 </v-btn>
+      <v-btn color="success" depressed @click="submitTodoItem"> 등록 </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -43,7 +43,20 @@ export default {
       contentValue: "",
     };
   },
-  methods: {},
+  methods: {
+    submitTodoItem() {
+      const item = {
+        title: this.titleValue,
+        subtitle: this.contentValue,
+      };
+
+      this.$emit("add-item", item);
+
+      this.titleValue = "";
+      this.contentValue = "";
+      this.$emit("switch-input-form");
+    },
+  },
   watch: {
     isActive(value) {
       if (!value) {
