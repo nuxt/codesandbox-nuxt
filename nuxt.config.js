@@ -21,7 +21,12 @@ export default {
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
    */
-  modules: [],
+  modules: ["@nuxtjs/vuetify"],
+
+  vuetify: {
+    // Vuetify options
+    //  theme: { }
+  },
 
   /*
    ** Global CSS
