@@ -12,6 +12,18 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "nuxt": "^2.15.0"
+    "@vue/cli-plugin-babel": "4.5.13",
+    "@vue/cli-plugin-eslint": "4.5.13",
+    "axios": "0.21.1",
+    "babel-eslint": "10.1.0",
+    "bootstrap-vue": "2.21.2",
+    "jquery": "3.6.0",
+    "nuxt": "^2.15.0",
+    "vue": "2.6.14",
+    "vue-axios": "3.2.4",
+    "vue-backtotop": "1.6.1",
+    "vue-carousel": "0.18.0",
+    "vue-router": "3.5.2",
+    "vue-slick": "1.1.16"
   }
 }
