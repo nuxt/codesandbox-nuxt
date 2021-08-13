@@ -1,17 +1,26 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "aphp",
   "version": "1.0.0",
-  "description": "Nuxt starter for CodeSandBox",
-  "author": "Nuxt.js Team",
+  "description": "APHP Compagnon",
+  "author": "gabrielstik",
   "private": true,
   "scripts": {
-    "dev": "MINIMAL=1 nuxt",
+    "dev": "nuxt",
+    "dev-remote": "STRAPI_URI=https://api-aphp.gabrielstik.fr/ && yarn dev",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "post-update": "yarn upgrade --latest"
+    "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.15.0"
-  }
+    "@nuxtjs/apollo": "^4.0.0-rc19",
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "graphql-tag": "^2.10.3",
+    "node-sass": "^4.13.1",
+    "nuxt": "^2.0.0",
+    "sass-loader": "^8.0.2",
+    "vuex-persist": "^2.2.0"
+  },
+  "devDependencies": {}
 }
