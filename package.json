@@ -12,6 +12,8 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@nuxtjs/dayjs": "1.4.1",
+    "date-fns": "2.27.0",
     "nuxt": "^2.15.0"
   }
 }

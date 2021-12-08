@@ -14,7 +14,14 @@ export default {
         content: "Official Nuxt.js starter for CodeSandBox"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+      }
+    ]
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -24,7 +31,7 @@ export default {
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
    */
-  modules: [],
+  modules: ["@nuxtjs/dayjs"],
 
   /*
    ** Global CSS

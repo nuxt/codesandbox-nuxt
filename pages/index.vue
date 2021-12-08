@@ -1,3 +1,3 @@
 <template>
-  <Tutorial />
+  <div></div>
 </template>
