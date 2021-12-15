@@ -14,7 +14,26 @@ export default {
         content: "Official Nuxt.js starter for CodeSandBox"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "https://unpkg.com/tailwindcss@^1.5/dist/base.min.css"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://unpkg.com/tailwindcss@^1.5/dist/components.min.css"
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://unpkg.com/tailwindcss@^1.5/dist/utilities.min.css"
+      }
+    ]
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -24,7 +43,10 @@ export default {
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
    */
-  modules: [],
+  modules: ["@tui-nuxt/editor"],
+  tui: {
+    editor: {}
+  },
 
   /*
    ** Global CSS

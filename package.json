@@ -1,7 +1,7 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "gff",
   "version": "1.0.0",
-  "description": "Nuxt starter for CodeSandBox",
+  "description": "",
   "author": "Nuxt.js Team",
   "private": true,
   "scripts": {
@@ -12,6 +12,8 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@tui-nuxt/editor": "1.0.0-beta.3",
     "nuxt": "^2.15.0"
-  }
+  },
+  "keywords": []
 }
