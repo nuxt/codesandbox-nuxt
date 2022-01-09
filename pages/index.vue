@@ -1,3 +1,4 @@
+
 <template>
-  <Tutorial />
+  <div>1234</div>
 </template>
