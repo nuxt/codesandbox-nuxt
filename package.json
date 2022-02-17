@@ -4,6 +4,9 @@
   "description": "",
   "author": "Nuxt.js Team",
   "private": true,
+   "engines": {
+    "node": ">=10.24.1 <15"
+  },
   "scripts": {
     "dev": "MINIMAL=1 CSB=1 nuxt",
     "build": "nuxt build",
