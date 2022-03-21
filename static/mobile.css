@@ -1,0 +1,270 @@
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  /* Make Navigation Toggle on Desktop Hover (use class: dropdown-hover) */
+  .dropdown-hover:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {
+  /* Text Carousel */
+  #text-carousel-intro-section .caption h1 {
+    font-size: 50px;
+  }
+
+  /* Team */
+  .team-item .team-triangle {
+    width: 90px;
+    height: 90px;
+  }
+  .team-triangle .content {
+    width: 160px;
+    height: 160px;
+  }
+  .team-hover i {
+    margin-top: 50px;
+  }
+  .team-hover p {
+    font-size: 14px;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  /* Team */
+  .team-item .team-triangle {
+    width: 120px;
+    height: 120px;
+  }
+  .team-triangle .content {
+    width: 190px;
+    height: 190px;
+  }
+  .team-hover i {
+    margin-top: 57px;
+  }
+  #team-section .col-md-2:nth-child(7n + 5),
+  #team-section .col-md-2:nth-child(7n + 1) {
+    margin-left: 0 !important;
+    clear: none !important;
+  }
+  #team-section .col-md-2 {
+    float: left;
+    margin-bottom: 80px;
+    width: 33.3333%;
+  }
+
+  /* Prices */
+  .price-box-featured .panel {
+    box-shadow: none;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+
+  .prices .price-box-featured .panel-footer {
+    box-shadow: none !important;
+  }
+
+  /* Parallax background */
+  .parallax {
+    background-attachment: scroll !important;
+    background-position: 50% 50% !important;
+    /* background-size: auto auto !important; */
+  }
+
+  /* Text carousel intro section caption */
+  #text-carousel-intro-section .caption {
+    top: 50% !important; /* Removes parallax on caption */
+  }
+  #text-carousel-intro-section .caption h1 {
+    font-size: 34px;
+  }
+  #text-carousel-intro-section .caption h3 {
+    font-size: 12px;
+  }
+
+  /* Error section caption */
+  #error-section .caption h1 {
+    font-size: 100px;
+  }
+  #error-section .caption h2 {
+    font-size: 13px;
+  }
+
+  /* Facts (counter up) */
+  .counter-up .fact-inner .counter {
+    font-size: 42px;
+  }
+  .counter-up .fact-inner .fa-3x {
+    font-size: 36px;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 767px) {
+  /* Navbar brand */
+  .navbar-brand,
+  .navbar-brand:focus {
+    margin-left: 10px;
+  }
+
+  /* Navbar toggle button */
+  .navbar-toggle {
+    margin-top: 18px;
+    border: none;
+  }
+  .navbar-toggle:hover,
+  .navbar-toggle:focus {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+
+  .navbar-toggle .icon-bar {
+    height: 3px;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff !important;
+  }
+  .navbar-transparent .navbar-toggle .icon-bar {
+    background-color: #fff !important;
+  }
+  .navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #fff !important;
+  }
+
+  /* Navbar collapse / links */
+  .navbar-collapse {
+    border-width: 2px;
+  }
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+    max-height: 440px;
+  }
+  .navbar-inverse .navbar-collapse {
+    background-color: #111;
+  }
+  .navbar-nav > li > a {
+    padding: 10px 0 !important;
+    color: #fff;
+  }
+  .navbar-nav .open .dropdown-menu > li > a {
+    padding: 10px 10px 10px 45px !important;
+  }
+  .navbar-default .navbar-nav > li > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #222;
+  }
+  .navbar-inverse .navbar-nav > li > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #ccc;
+  }
+  .navbar-default.navbar-shrink .navbar-nav > li.active > a {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Navbar shrink toggle button */
+  .navbar-shrink .navbar-toggle .icon-bar {
+    background-color: #fff !important;
+  }
+  .navbar-inverse.navbar-shrink .navbar-toggle .icon-bar {
+    background-color: #fff !important;
+  }
+
+  /* Page */
+  .page {
+    padding-top: 30px;
+  }
+
+  /* Some Text Center Area */
+  #cta-section,
+  #about-section,
+  #contact-section,
+  #contact-section .contact .form-control {
+    text-align: center;
+  }
+
+  /* Rotate Box */
+  .rotate-box-1 .rotate-box-info {
+    padding-left: 0;
+    text-align: center;
+  }
+  .rotate-box-1 .rotate-box-icon {
+    float: none;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  a.rotate-box-1 {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  /* Team */
+  #team-section .col-md-2 {
+    width: 50%;
+    float: left;
+    margin-bottom: 80px;
+  }
+
+  /* Prices */
+  .prices .price-box-featured .panel-footer {
+    box-shadow: none !important;
+  }
+
+  ul.contact-address {
+    margin-bottom: 50px;
+  }
+
+  /* Partners & Foter */
+  #partners-section,
+  footer {
+    text-align: center;
+  }
+
+  /* Hiding elements */
+  .testimonial:before,
+  .owl-prev,
+  .owl-next {
+    display: none !important;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  /* Team */
+  #team-section .col-md-2 {
+    width: 100%;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+}

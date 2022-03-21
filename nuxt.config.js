@@ -1,40 +1,54 @@
 export default {
-  /*
-   ** Headers of the page
-   ** Doc: https://vue-meta.nuxtjs.org/api/#metainfo-properties
-   */
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Nuxt.js starter for CSB",
+    title: "Nuxt Starter",
+    htmlAttrs: {
+      lang: "en"
+    },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        hid: "description",
-        name: "description",
-        content: "Official Nuxt.js starter for CodeSandBox"
-      }
+      { hid: "description", name: "description", content: "" }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    script: [{ src: "/js/jquery.js" }, { src: "/js/theme.js" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "stylesheet", type: "text/css", href: "/style.css" },
+      { rel: "stylesheet", type: "text/css", href: "/mobile.css" },
+      { rel: "stylesheet", type: "text/css", href: "/reset.css" },
+      { rel: "stylesheet", type: "text/css", href: "/bootstrap.css" },
+      { rel: "stylesheet", type: "text/css", href: "/animate.css" },
+      { rel: "stylesheet", type: "text/css", href: "/font-awesome.css" },
+      { rel: "stylesheet", type: "text/css", href: "/owl-carousel.css" },
+      { rel: "stylesheet", type: "text/css", href: "/owl-theme.css" },
+      {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "https://fonts.googleapis.com/css?family=Roboto:400,700,500"
+      },
+      {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "https://fonts.googleapis.com/css?family=Lato:300,400"
+      }
+    ]
   },
+
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [],
+
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  /*
-   ** Nuxt.js modules
-   ** Doc: https://modules.nuxtjs.org
-   */
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
-  /*
-   ** Global CSS
-   ** Doc: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-css
-   */
-  css: [],
-
-  /*
-   ** Plugins to load before mounting the App
-   ** Doc: https://nuxtjs.org/docs/2.x/directory-structure/plugins
-   */
-  plugins: []
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {}
 };
