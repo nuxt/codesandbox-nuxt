@@ -1,7 +1,7 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "nuxt-auth-boilerplate",
   "version": "1.0.0",
-  "description": "Nuxt starter for CodeSandBox",
+  "description": "",
   "author": "Nuxt.js Team",
   "private": true,
   "scripts": {
@@ -12,6 +12,10 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@nuxtjs/auth-next": "5.0.0-1648802546.c9880dc",
+    "@nuxtjs/axios": "5.13.6",
+    "@nuxtjs/dotenv": "1.4.1",
     "nuxt": "^2.15.0"
-  }
+  },
+  "keywords": []
 }
